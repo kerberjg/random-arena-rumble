@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletMover : MonoBehaviour
+public class Bullet : MonoBehaviour
     
 {
     public float bulletSpeed = 5f;
     public float lifeTime;
     public float spread;
     public bool piercing;
-
+    public float damage;
+   
 
     public List<string> targetTag;
+
 
     void Update()
     {
@@ -23,6 +25,7 @@ public class BulletMover : MonoBehaviour
     {
         if (piercing && collision.gameObject.tag == "Wall") {
             Destroy(gameObject);
+            print("Bullet Piercing");
         }
         else {
             foreach (string tag in targetTag) {

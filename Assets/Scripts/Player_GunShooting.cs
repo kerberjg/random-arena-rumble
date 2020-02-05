@@ -7,8 +7,11 @@ public class Player_GunShooting : MonoBehaviour
     public GameObject bullet;
     public GameObject gunBarrel;
     GameObject playerAppearance;
+
     public float fireRate;
-    float timeBetweenBullets;
+    public float timeBetweenBullets;
+    public float damage;
+    public bool piercing;
 
     private void Start()
     {       
@@ -31,7 +34,9 @@ public class Player_GunShooting : MonoBehaviour
             
             //Shoot
             GameObject b = Instantiate(bullet, gunBarrel.transform.position, gunBarrel.transform.rotation);
-            b.GetComponent<BulletMover>().targetTag.Add("Enemy");
+            b.GetComponent<Bullet>().targetTag.Add("Enemy");
+            b.GetComponent<Bullet>().piercing = piercing;
+            b.GetComponent<Bullet>().damage = damage;
 
             timeBetweenBullets = 0;
         }
