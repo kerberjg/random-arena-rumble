@@ -5,14 +5,14 @@ using UnityEngine;
 public class Player_GunShooting : MonoBehaviour
 {
     public GameObject bullet;
-    GameObject gunBarrel;
+    public GameObject gunBarrel;
     GameObject playerAppearance;
     public float fireRate;
     float timeBetweenBullets;
 
     private void Start()
     {
-        gunBarrel = GameObject.Find("GunBarrel");
+        
         playerAppearance = GameObject.Find("Appearance");
     }
 
@@ -20,6 +20,8 @@ public class Player_GunShooting : MonoBehaviour
     void Update()
     {
         timeBetweenBullets += Time.deltaTime;
+
+        gunBarrel.transform.rotation = playerAppearance.transform.rotation;
 
         if(Input.GetKey(KeyCode.Space) && timeBetweenBullets > fireRate) {
             
