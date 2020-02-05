@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 56085491}
   m_Layer: 0
   m_Name: Bot_CornerL
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 90374441}
   m_Layer: 0
   m_Name: Top_CornerR
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 333396021}
   m_Layer: 0
   m_Name: Top_CornerL
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -568,7 +568,7 @@ GameObject:
   - component: {fileID: 493902788}
   m_Layer: 0
   m_Name: Wall_Right
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -674,7 +674,7 @@ GameObject:
   - component: {fileID: 1279787229}
   m_Layer: 0
   m_Name: Wall_Bottom
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -780,7 +780,7 @@ GameObject:
   - component: {fileID: 1294348539}
   m_Layer: 0
   m_Name: Wall_Left
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -886,7 +886,7 @@ GameObject:
   - component: {fileID: 1522522305}
   m_Layer: 0
   m_Name: Bot_CornerR
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -992,7 +992,7 @@ GameObject:
   - component: {fileID: 1540312558}
   m_Layer: 0
   m_Name: Wall_Top
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1203,6 +1203,56 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 650072913303706837, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 650072913303706837, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 1959586648554787270, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159447818739422651, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159447818739422651, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 9214501520713243872, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.06270337
+      objectReference: {fileID: 0}
+    - target: {fileID: 9214501520713243872, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9980322
+      objectReference: {fileID: 0}
+    - target: {fileID: 9214501520713243872, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -7.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 9214501520713243879, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
+        type: 3}
+      propertyPath: m_Name
+      value: Pistol
+      objectReference: {fileID: 0}
+    - target: {fileID: 9214501520749015063, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9214501521292490981, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
         type: 3}
       propertyPath: m_LocalPosition.x

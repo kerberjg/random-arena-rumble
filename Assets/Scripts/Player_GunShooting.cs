@@ -11,8 +11,7 @@ public class Player_GunShooting : MonoBehaviour
     float timeBetweenBullets;
 
     private void Start()
-    {
-        
+    {       
         playerAppearance = GameObject.Find("Appearance");
     }
 
@@ -23,10 +22,16 @@ public class Player_GunShooting : MonoBehaviour
 
         gunBarrel.transform.rotation = playerAppearance.transform.rotation;
 
-        if(Input.GetKey(KeyCode.Space) && timeBetweenBullets > fireRate) {
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 aimDirection = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
+
+        gunBarrel.transform.up = aimDirection;
+
+        if (Input.GetKey(KeyCode.Space) && timeBetweenBullets > fireRate) {
             
             //Shoot
-            Instantiate(bullet, gunBarrel.transform.position, playerAppearance.transform.rotation);
+            GameObject b = Instantiate(bullet, gunBarrel.transform.position, gunBarrel.transform.rotation);
+            b.GetComponent<BulletMover>().targetTag.Add("Enemy");
 
             timeBetweenBullets = 0;
         }
