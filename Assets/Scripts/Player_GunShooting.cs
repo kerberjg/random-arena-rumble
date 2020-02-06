@@ -10,8 +10,11 @@ public class Player_GunShooting : MonoBehaviour
 
     public float fireRate;
     public float timeBetweenBullets;
+    public float bulletSpeed;
     public float damage;
+    public float lifeTime_Bullet;
     public bool piercing;
+
 
     private void Start()
     {       
@@ -37,6 +40,8 @@ public class Player_GunShooting : MonoBehaviour
             b.GetComponent<Bullet>().targetTag.Add("Enemy");
             b.GetComponent<Bullet>().piercing = piercing;
             b.GetComponent<Bullet>().damage = damage;
+            b.GetComponent<Bullet>().bulletSpeed = bulletSpeed;
+            b.GetComponent<Bullet>().lifeTime_Bullet = lifeTime_Bullet;
 
             timeBetweenBullets = 0;
         }

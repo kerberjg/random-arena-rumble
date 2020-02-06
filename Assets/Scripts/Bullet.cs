@@ -6,10 +6,10 @@ public class Bullet : MonoBehaviour
     
 {
     public float bulletSpeed = 5f;
-    public float lifeTime;
     public float spread;
     public bool piercing;
     public float damage;
+    public float lifeTime_Bullet;
    
 
     public List<string> targetTag;
@@ -18,6 +18,8 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         transform.Translate(0, bulletSpeed * Time.deltaTime, 0);
+
+        Destroy(gameObject, lifeTime_Bullet);
 
     }
 
@@ -36,5 +38,6 @@ public class Bullet : MonoBehaviour
                 }
             }
         }
+       
     }
 }

@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 
 {
-    GameObject playerSprite;
+    public GameObject leftHandPivot;
+    
     Rigidbody2D rigidBody;
 
     public float speed = 5f;
@@ -18,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         layerMask = LayerMask.GetMask("AimLayer");
-        playerSprite = GameObject.Find("Appearance");
+        //playerSprite = GameObject.Find("Appearance");
     }
     void Update()
 
@@ -35,7 +36,8 @@ public class PlayerMovement : MonoBehaviour
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 aimDirection = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
 
-        playerSprite.transform.up = aimDirection;
+        leftHandPivot.transform.up = aimDirection;
+        
     }
 
     void FixedUpdate()
