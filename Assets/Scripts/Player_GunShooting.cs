@@ -33,7 +33,7 @@ public class Player_GunShooting : MonoBehaviour
 
         gunBarrel.transform.up = aimDirection;
 
-        if (Input.GetKey(KeyCode.Space) && timeBetweenBullets > fireRate) {
+        if (Input.GetKey(KeyCode.Mouse0) && timeBetweenBullets > fireRate) {
             
             //Shoot
             GameObject b = Instantiate(bullet, gunBarrel.transform.position, gunBarrel.transform.rotation);
