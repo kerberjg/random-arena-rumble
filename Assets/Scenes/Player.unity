@@ -1315,56 +1315,23 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 943459798, guid: 87a3ad50c2fc0404ba67ce9f8ac67761, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 1884946200, guid: 87a3ad50c2fc0404ba67ce9f8ac67761, type: 3}
+    - target: {fileID: 761616523, guid: 87a3ad50c2fc0404ba67ce9f8ac67761, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1884946202, guid: 87a3ad50c2fc0404ba67ce9f8ac67761, type: 3}
-      propertyPath: lifeTime_Bullet
-      value: 0.5
+    - target: {fileID: 1370968960, guid: 87a3ad50c2fc0404ba67ce9f8ac67761, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1884946203, guid: 87a3ad50c2fc0404ba67ce9f8ac67761, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 207876933034526738, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3852477811458813187, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
+    - target: {fileID: 4578603906362254097, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
         type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5302660954034958690, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
+    - target: {fileID: 6396858209192944300, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
         type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 5302660954034958690, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.91
-      objectReference: {fileID: 0}
-    - target: {fileID: 7015732215027041135, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
-        type: 3}
-      propertyPath: lifeTime_Bullet
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8611335931802583299, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 8611335931802583299, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.6
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9214501521292490981, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
         type: 3}

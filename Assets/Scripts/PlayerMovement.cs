@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 
 {
     public GameObject leftHandPivot;
+    public GameObject rightHandPivot;
     
     Rigidbody2D rigidBody;
 
@@ -37,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
         Vector2 aimDirection = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
 
         leftHandPivot.transform.up = aimDirection;
+        rightHandPivot.transform.up = aimDirection;
         
     }
 
