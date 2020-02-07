@@ -82,11 +82,11 @@ class CircleState : StateBehavior<MeleeEnemy> {
         // if movement phase is over...
         if(circleTime <= 0) {
             // ...change direction or move to next phase when counter runs out
-            // if(++circleCount >= maxCircles) {
-            //     machine.states.SwitchState("stab_in");
-            // } else {
+            if(++circleCount >= maxCircles) {
+                machine.states.SwitchState("stab_in");
+            } else {
                 ToggleDirection();
-            // }
+            }
         }
         // ...otherwise keep circling in the chosen direction
         else {
@@ -132,8 +132,8 @@ abstract class BaseStabState : StateBehavior<MeleeEnemy> {
 
     /// Calculate direction and distance
     public void CalculateDistance() {
-        Vector3 direction = machine.transform.position - machine.targetPos;
-        float distance = direction.magnitude;
+        direction = machine.transform.position - machine.targetPos;
+        distance = direction.magnitude;
         direction.Normalize();
     }
     
@@ -147,8 +147,10 @@ class StabInState : BaseStabState {
     public override void Mount() {}
     public override void Unmount() {}
     public override void Update() {
+        CalculateDistance();
+
         if(distance > machine.stabDistance)
-            machine.transform.position = machine.transform.position + CalculateMovement();
+            machine.transform.position = machine.transform.position - CalculateMovement();
         else
             machine.states.SwitchState("stab_out");
     }   
@@ -159,8 +161,10 @@ class StabOutState : BaseStabState {
     public override void Mount() {}
     public override void Unmount() {}
     public override void Update() {
+        CalculateDistance();
+
         if(distance < machine.minTargetDistance)
-            machine.transform.position = machine.transform.position - CalculateMovement();
+            machine.transform.position = machine.transform.position + CalculateMovement();
         else
             machine.states.SwitchState("circle");
     }   
