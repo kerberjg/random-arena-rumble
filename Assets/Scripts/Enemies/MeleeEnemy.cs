@@ -18,6 +18,7 @@ public class MeleeEnemy : BaseEnemyBehavior
             { "circle_right", new CircleRightState(this) },
             { "stab_in", new StabInState(this) },
             { "stab_out", new StabOutState(this) },
+            { "dead", new DeadState(this) },
         }, "circle_left");
     }
 
@@ -32,6 +33,11 @@ public class MeleeEnemy : BaseEnemyBehavior
     {
         // update FSM
         states.UpdateState();
+
+        // check health
+        if(GetComponent<Health>().health == 0) {
+            states.SwitchState("dead");
+        }
     }
 }
 
@@ -61,6 +67,20 @@ class StabInState : StateBehavior<MeleeEnemy> {
 class StabOutState : StateBehavior<MeleeEnemy> {
     public StabOutState(MeleeEnemy m) : base(m) {}
     public override void Mount() {}
+    public override void Unmount() {}
+    public override void Update() {}
+    
+}
+
+class DeadState : StateBehavior<MeleeEnemy> {
+    public DeadState(MeleeEnemy m) : base(m) {}
+    public override void Mount() {
+        // disable stalking/distancekeeping behavior
+        machine.enableFollow = false;
+        machine.enableTracking = false;
+
+        // TODO: decide how death state should look like
+    }
     public override void Unmount() {}
     public override void Update() {}
     
