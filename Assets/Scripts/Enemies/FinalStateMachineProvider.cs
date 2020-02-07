@@ -9,6 +9,8 @@ public class FinalStateMachineProvider<T> where T: MonoBehaviour {
 
     public FinalStateMachineProvider(Dictionary<string, StateBehavior<T>> statesMap, string firstState) {
         this.states = statesMap;
+        
+        state = firstState;
         SwitchState(firstState);
     }
 
