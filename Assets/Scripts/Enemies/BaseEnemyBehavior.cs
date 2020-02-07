@@ -48,7 +48,7 @@ abstract public class BaseEnemyBehavior : MonoBehaviour
     [SerializeField]
     private Vector3 _tmpDist = new Vector3();
 
-    void UpdateFollow() {
+    public void UpdateFollow(Vector3 targetPos) {
         // calculate distance to target
         _tmpDist = this.transform.position - targetPos;
         float distance = _tmpDist.magnitude;
@@ -93,7 +93,7 @@ abstract public class BaseEnemyBehavior : MonoBehaviour
 
     void Update() {
         if(enableTracking) UpdateTracking();
-        if(enableFollow) UpdateFollow();
+        if(enableFollow) UpdateFollow(targetPos);
 
         EnemyUpdate();
     }
