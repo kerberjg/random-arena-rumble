@@ -785,12 +785,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 1
+  currentWeapon: 0
   Pistol_LeftHand: {fileID: 2108587148}
   Pistol_RightHand: {fileID: 677492405}
   Sniper_LeftHand: {fileID: 1294283667}
   Sniper_RightHand: {fileID: 2042831244}
   AkimboHand: {fileID: 842439070}
   RightHand_Empty: {fileID: 1175793116}
+--- !u!114 &1067926406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067926400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fd77ce05c484594d977065edf849ba9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 8
+  minSpeed: 2
+  maxSize: 0.4
+  minSize: 0.1
+  modifierApplied: 0
+  nextModifier: 0
 --- !u!1 &1175793116 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4578603906362254097, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
@@ -826,6 +845,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 254fc3afa55105541ad3c9889f50b079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextPlayerModifier: 0
+  excludeModifiers: 0000000001000000
 --- !u!4 &1252498455
 Transform:
   m_ObjectHideFlags: 0
@@ -1436,6 +1457,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9214501521292490980, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
+        type: 3}
+      propertyPath: speed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9214501521292490981, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
         type: 3}

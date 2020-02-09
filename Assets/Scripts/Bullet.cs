@@ -27,7 +27,7 @@ public class Bullet : MonoBehaviour
     {
         if (piercing && collision.gameObject.tag == "Wall") {
             Destroy(gameObject);
-            print("Bullet Piercing");
+           // print("Bullet Piercing");
         }
         else {
             foreach (string tag in targetTag) {

@@ -19,7 +19,6 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
-        layerMask = LayerMask.GetMask("AimLayer");
         //playerSprite = GameObject.Find("Appearance");
     }
     void Update()

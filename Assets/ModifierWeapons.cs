@@ -6,6 +6,7 @@ public class ModifierWeapons : MonoBehaviour
 {
     public enum WeaponType { pistol, sniper, akimbo };
     public int weaponType = 1;
+    public WeaponType currentWeapon;
 
     public GameObject Pistol_LeftHand;
     public GameObject Pistol_RightHand;
@@ -21,30 +22,30 @@ public class ModifierWeapons : MonoBehaviour
     void Update()
     {
 
-        switch (weaponType) {
+        switch (currentWeapon) {
 
-            case 1:
-                print("Pistol");
+            case WeaponType.pistol:
+                //print("Pistol");
                 Pistol_LeftHand.SetActive(true);
                 Pistol_RightHand.SetActive(true);
                 Sniper_LeftHand.SetActive(false);
                 Sniper_RightHand.SetActive(false);
                 break;
-            case 2:
-                print("Sniper");
+            case WeaponType.sniper:
+               // print("Sniper");
                 Sniper_LeftHand.SetActive(true);
                 Sniper_RightHand.SetActive(true);
                 Pistol_LeftHand.SetActive(false);
                 Pistol_RightHand.SetActive(false);
 
                 break;
-            case 3:
-                print("Akimbo");
+            case WeaponType.akimbo:
+               // print("Akimbo");
                 AkimboHand.SetActive(true);
                 RightHand_Empty.SetActive(false);
                 break;
             default:
-                print("Default");
+               //print("Default");
                 break;
         }
     }
