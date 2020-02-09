@@ -13,9 +13,6 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5f;
     Vector2 movement;
 
-    //Aim
-    int layerMask;
-
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
@@ -34,10 +31,11 @@ public class PlayerMovement : MonoBehaviour
     private void PlayerAiming()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 aimDirection = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
+        Vector2 aimDirection_Left = new Vector2(mousePos.x - leftHandPivot.transform.position.x, mousePos.y - leftHandPivot.transform.position.y);
+        Vector2 aimDirection_Right = new Vector2(mousePos.x - rightHandPivot.transform.position.x, mousePos.y - rightHandPivot.transform.position.y);
 
-        leftHandPivot.transform.up = aimDirection;
-        rightHandPivot.transform.up = aimDirection;
+        leftHandPivot.transform.up = aimDirection_Left;
+        rightHandPivot.transform.up = aimDirection_Right;
         
     }
 
@@ -45,4 +43,5 @@ public class PlayerMovement : MonoBehaviour
     {
         transform.Translate(movement.x * speed * Time.fixedDeltaTime, movement.y * speed * Time.fixedDeltaTime, 0); //Move player based on input.
     }
+
 }
