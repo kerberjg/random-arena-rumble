@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,15 +7,20 @@ public class MeleeEnemy : BaseEnemyBehavior
     [Header("FSM")]
     public string state;
 
-    [Header("Melee behavior")]
+    [Header("Melee (circling) behavior")]
+
+    public Vector2 circleTimeRange = new Vector2(1f, 2f);
     public float circleLeftSpeed = 2f;
     public float circleRightSpeed = 2f;
+    public int maxCircles = 4;
+    [Header("Melee (stabbing) behavior")]
     public float stabInSpeed = 5f;
     public float stabOutSpeed = 3f;
     public float stabDistance = 0.5f;
 
     [Header("Melee debug")]
     public float circleAngle = 0f;
+    public GameObject stalkerDebugger;
 
     public FinalStateMachineProvider<MeleeEnemy> states;
 
@@ -55,11 +60,7 @@ class CircleState : StateBehavior<MeleeEnemy> {
 
     private CircleDirection direction;
 
-    public float minCircleTime = 1f;
-    public float maxCircleTime = 4f;
     public float circleTime;
-
-    public int maxCircles = 4;
     public int circleCount;
 
     public CircleState(MeleeEnemy m) : base(m) {}
@@ -68,7 +69,7 @@ class CircleState : StateBehavior<MeleeEnemy> {
         ToggleDirection();
 
         // reset circling counter
-        if(circleCount >= maxCircles) {
+        if(circleCount >= machine.maxCircles) {
             circleCount = 0;
         }
     }
@@ -82,7 +83,7 @@ class CircleState : StateBehavior<MeleeEnemy> {
         // if movement phase is over...
         if(circleTime <= 0) {
             // ...change direction or move to next phase when counter runs out
-            if(++circleCount >= maxCircles) {
+            if(++circleCount >= machine.maxCircles) {
                 machine.states.SwitchState("stab_in");
             } else {
                 ToggleDirection();
@@ -127,7 +128,7 @@ class CircleState : StateBehavior<MeleeEnemy> {
         else
             this.direction = CircleDirection.left;
 
-        circleTime = Random.Range(minCircleTime, maxCircleTime);
+        circleTime = Random.Range(machine.circleTimeRange.x, machine.circleTimeRange.y);
     }
 }
 
