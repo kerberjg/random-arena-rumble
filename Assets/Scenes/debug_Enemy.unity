@@ -381,7 +381,7 @@ PrefabInstance:
     - target: {fileID: 8887761849016728861, guid: f5f57569be9554e93ad20daa3dd80838,
         type: 3}
       propertyPath: m_Name
-      value: EnemyContainer
+      value: MeleeEnemyContainer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5f57569be9554e93ad20daa3dd80838, type: 3}
