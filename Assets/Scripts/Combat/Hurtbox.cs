@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class Hurtbox : MonoBehaviour
 {
     /// Whether an entity can be healed back to life after death
     public bool allowResuscitation = false;
+    public bool destroyOnDeath = false;
     /// Maximum health value. The health is initialized to this value
     public float maxHealth = 0;
-    public float health {
-        get;
-        private set;
-    }
+    [SerializeField]
+    private float health;
 
     void Start()
     {
@@ -28,6 +27,10 @@ public class Health : MonoBehaviour
             return false;
         } else {
             health = 0;
+            if(destroyOnDeath) {
+                Destroy(gameObject);
+            }
+
             return true;
         }
     }
