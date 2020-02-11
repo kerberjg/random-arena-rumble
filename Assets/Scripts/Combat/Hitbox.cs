@@ -14,7 +14,7 @@ public class Hitbox : MonoBehaviour
                 ApplyDamage(collision.gameObject);
 
                 if(destroyOnImpact) {
-                    Destroy(this);
+                    Destroy(gameObject);
                 }
                 return;
             }

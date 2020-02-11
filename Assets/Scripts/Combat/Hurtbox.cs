@@ -28,7 +28,7 @@ public class Hurtbox : MonoBehaviour
         } else {
             health = 0;
             if(destroyOnDeath) {
-                Destroy(this);
+                Destroy(gameObject);
             }
 
             return true;
