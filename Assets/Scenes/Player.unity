@@ -754,6 +754,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!212 &842439072 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4222231326543174968, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
+    type: 3}
+  m_PrefabInstance: {fileID: 9214501521626738556}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1252498453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1360,6 +1366,51 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 761616525, guid: 87a3ad50c2fc0404ba67ce9f8ac67761, type: 3}
+      propertyPath: gunSpriteRenderer
+      value: 
+      objectReference: {fileID: 842439072}
+    - target: {fileID: 761616525, guid: 87a3ad50c2fc0404ba67ce9f8ac67761, type: 3}
+      propertyPath: normalGun
+      value: 
+      objectReference: {fileID: -1905124873699764946, guid: 7125c11ed8ef64f4aa32d68d2bcf14ba,
+        type: 3}
+    - target: {fileID: 761616525, guid: 87a3ad50c2fc0404ba67ce9f8ac67761, type: 3}
+      propertyPath: shootSprite
+      value: 
+      objectReference: {fileID: 1551964415014356361, guid: 7125c11ed8ef64f4aa32d68d2bcf14ba,
+        type: 3}
+    - target: {fileID: 761616525, guid: 87a3ad50c2fc0404ba67ce9f8ac67761, type: 3}
+      propertyPath: muzzleFlashDelay
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370968962, guid: 87a3ad50c2fc0404ba67ce9f8ac67761, type: 3}
+      propertyPath: gunSpriteRenderer
+      value: 
+      objectReference: {fileID: 842439072}
+    - target: {fileID: 1370968962, guid: 87a3ad50c2fc0404ba67ce9f8ac67761, type: 3}
+      propertyPath: normalGun
+      value: 
+      objectReference: {fileID: -1905124873699764946, guid: 7125c11ed8ef64f4aa32d68d2bcf14ba,
+        type: 3}
+    - target: {fileID: 1370968962, guid: 87a3ad50c2fc0404ba67ce9f8ac67761, type: 3}
+      propertyPath: shootSprite
+      value: 
+      objectReference: {fileID: 1551964415014356361, guid: 7125c11ed8ef64f4aa32d68d2bcf14ba,
+        type: 3}
+    - target: {fileID: 1370968962, guid: 87a3ad50c2fc0404ba67ce9f8ac67761, type: 3}
+      propertyPath: muzzleFlashDelay
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1884946202, guid: 87a3ad50c2fc0404ba67ce9f8ac67761, type: 3}
+      propertyPath: muzzleFlashDelay
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7015732215027041135, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
+        type: 3}
+      propertyPath: muzzleFlashDelay
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 9214501521292490981, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
         type: 3}
       propertyPath: m_LocalPosition.x
