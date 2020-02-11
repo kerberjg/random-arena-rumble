@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public GameObject leftHandPivot;
     public GameObject rightHandPivot;
+    BoxCollider2D playerCollider;
     
     Rigidbody2D rigidBody;
 
@@ -16,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        playerCollider = GetComponent<BoxCollider2D>();
         //playerSprite = GameObject.Find("Appearance");
     }
     void Update()
@@ -36,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
         leftHandPivot.transform.up = aimDirection_Left;
         rightHandPivot.transform.up = aimDirection_Right;
-        
+
     }
 
     void FixedUpdate()

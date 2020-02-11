@@ -1448,6 +1448,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1884946202, guid: 87a3ad50c2fc0404ba67ce9f8ac67761, type: 3}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1884946202, guid: 87a3ad50c2fc0404ba67ce9f8ac67761, type: 3}
+      propertyPath: lifeTime_Bullet
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 4578603906362254097, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
         type: 3}
       propertyPath: m_IsActive
@@ -1457,6 +1465,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7015732215027041135, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
+        type: 3}
+      propertyPath: damage
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9214501521292490980, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
         type: 3}
