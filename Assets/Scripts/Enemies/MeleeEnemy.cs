@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -137,8 +137,8 @@ abstract class BaseStabState : StateBehavior<MeleeEnemy> {
         direction.Normalize();
     }
     
-    public Vector3 CalculateMovement() {
-        return direction * machine.stabOutSpeed * Time.deltaTime;
+    public Vector3 CalculateMovement(float speed) {
+        return direction * speed * Time.deltaTime;
     }
 }
 
@@ -150,7 +150,7 @@ class StabInState : BaseStabState {
         CalculateDistance();
 
         if(distance > machine.stabDistance)
-            machine.transform.position = machine.transform.position - CalculateMovement();
+            machine.transform.position = machine.transform.position - CalculateMovement(machine.stabInSpeed);
         else
             machine.states.SwitchState("stab_out");
     }   
@@ -164,7 +164,7 @@ class StabOutState : BaseStabState {
         CalculateDistance();
 
         if(distance < machine.minTargetDistance)
-            machine.transform.position = machine.transform.position + CalculateMovement();
+            machine.transform.position = machine.transform.position + CalculateMovement(machine.stabOutSpeed);
         else
             machine.states.SwitchState("circle");
     }   
