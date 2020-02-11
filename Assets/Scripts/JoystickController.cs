@@ -12,7 +12,7 @@ public class JoystickController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && pressed == false)
+        if (Input.GetKeyDown("space") && pressed == false)
         {
             pressed = true;
             isMovingDown = true;
