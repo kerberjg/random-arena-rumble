@@ -55,8 +55,8 @@ class CircleState : StateBehavior<MeleeEnemy> {
 
     private CircleDirection direction;
 
-    public float minCircleTime = 0.5f;
-    public float maxCircleTime = 2f;
+    public float minCircleTime = 1f;
+    public float maxCircleTime = 4f;
     public float circleTime;
 
     public int maxCircles = 4;
@@ -90,25 +90,33 @@ class CircleState : StateBehavior<MeleeEnemy> {
         }
         // ...otherwise keep circling in the chosen direction
         else {
-            float angle = machine.circleLeftSpeed * Time.deltaTime;
 
-            if(this.direction == CircleDirection.right)
-                angle *= -1;
-
-            machine.circleAngle += angle;
+            if(this.direction == CircleDirection.left)
+                machine.circleAngle += machine.circleLeftSpeed * Mathf.Deg2Rad * Time.deltaTime;
+            else
+                machine.circleAngle -= machine.circleRightSpeed * Mathf.Deg2Rad * Time.deltaTime;
         }
 
         // calculate movement target (including circling angle)
+        float targetDistance = machine.minTargetDistance + 1f;     // adds a small distance just in case
+
         machine.enableFollow = false;
         Vector3 actualTargetPos = new Vector3(
             Mathf.Cos(machine.circleAngle),
             Mathf.Sin(machine.circleAngle),
             0f
-        ) * machine.minTargetDistance + machine.targetPos;
+        ) * targetDistance + machine.targetPos;
 
         float tmpDistance = machine.minTargetDistance;
+        float tmpSpeed = machine.followSpeed;
+
         machine.minTargetDistance = 0.01f;
+        machine.followSpeed = (machine.transform.position - actualTargetPos).magnitude;
         machine.UpdateFollow(actualTargetPos);
+        if(machine.stalkerDebugger != null) {
+            machine.stalkerDebugger.transform.position = actualTargetPos;
+        }
+
         machine.minTargetDistance = tmpDistance;
         machine.UpdateFollow(machine.targetPos);
     }
