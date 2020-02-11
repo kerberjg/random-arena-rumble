@@ -6,6 +6,7 @@ public class ModifierPlayer : MonoBehaviour
 {
     ModifierManager modifierManager;
     PlayerMovement playerMovement;
+    Hurtbox playerHurtBox;
     Transform playerTransform;
 
     public float maxSpeed;
@@ -15,6 +16,10 @@ public class ModifierPlayer : MonoBehaviour
     public float maxSize;
     public float minSize;
     float normalSize;
+
+    public float giantHealth;
+    public float tinyHealth;
+    float normalHealth;
 
     public bool modifierApplied;
 
@@ -26,15 +31,28 @@ public class ModifierPlayer : MonoBehaviour
     {
         modifierManager = GameObject.Find("ModifierManager").GetComponent<ModifierManager>();
         playerMovement = GetComponent<PlayerMovement>();
+        playerHurtBox = GameObject.Find("Player").GetComponent<Hurtbox>();
         playerTransform = GameObject.Find("Player").GetComponent<Transform>();
 
         normalSpeed = playerMovement.speed;
         normalSize = playerTransform.localScale.x;
+        normalHealth = playerHurtBox.maxHealth;
     }
 
     private void Update()
     {
-   
+
+    }
+
+    private void HealthModifier()
+    {
+        if (playerTransform.localScale.x == normalSize) {
+            playerHurtBox.maxHealth = normalHealth;
+        } else if (playerTransform.localScale.x == maxSize) {
+            playerHurtBox.maxHealth = giantHealth;
+        } else if (playerTransform.localScale.x == minSize) {
+            playerHurtBox.maxHealth = tinyHealth;
+        }
     }
 
     public void SizeDown()
@@ -44,11 +62,14 @@ public class ModifierPlayer : MonoBehaviour
             modifierManager.excludeModifiers.Add(7); //Player has min Size, can't get SizeDown anymore.
         } else if (playerTransform.localScale.x == maxSize) {
             playerTransform.localScale = new Vector3(normalSize, normalSize, normalSize);
+
         }
 
         if(playerTransform.localScale.x != maxSize) {
             modifierManager.excludeModifiers.Remove(6); //Player can get Size Up.
         }
+
+        HealthModifier();
     }
 
     public void SizeUp()
@@ -63,6 +84,8 @@ public class ModifierPlayer : MonoBehaviour
         if(playerTransform.localScale.x != minSize) {
             modifierManager.excludeModifiers.Remove(7); //Player can get Size Down.
         }
+
+        HealthModifier();
     }
 
     public void ApplyModifierPlayer()
