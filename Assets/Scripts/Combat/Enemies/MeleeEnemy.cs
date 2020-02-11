@@ -47,7 +47,7 @@ public class MeleeEnemy : BaseEnemyBehavior
         state = states.state;
 
         // check health
-        if(!GetComponent<Health>().isAlive) {
+        if(!GetComponent<Hurtbox>().isAlive) {
             states.SwitchState("dead");
         }
     }

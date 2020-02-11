@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class Hurtbox : MonoBehaviour
 {
     /// Whether an entity can be healed back to life after death
     public bool allowResuscitation = false;
