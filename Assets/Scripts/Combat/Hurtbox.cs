@@ -6,6 +6,7 @@ public class Hurtbox : MonoBehaviour
 {
     /// Whether an entity can be healed back to life after death
     public bool allowResuscitation = false;
+    public bool destroyOnDeath = false;
     /// Maximum health value. The health is initialized to this value
     public float maxHealth = 0;
     [SerializeField]
@@ -26,6 +27,10 @@ public class Hurtbox : MonoBehaviour
             return false;
         } else {
             health = 0;
+            if(destroyOnDeath) {
+                Destroy(this);
+            }
+
             return true;
         }
     }
