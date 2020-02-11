@@ -31,13 +31,22 @@ public class Bullet : MonoBehaviour
         }
         else {
             foreach (string tag in targetTag) {
-
                 if(collision.gameObject.tag == tag) {
+                    ApplyDamage(collision.gameObject);
                     Destroy(gameObject);
                     return;
                 }
             }
         }
        
+    }
+
+    void ApplyDamage(GameObject other) {
+        Health h;
+        
+        if(other.TryGetComponent<Health>(out h)) {
+            h.Hit(damage);
+            Debug.Log("Hit " + other.tag + ": " + damage);
+        } 
     }
 }

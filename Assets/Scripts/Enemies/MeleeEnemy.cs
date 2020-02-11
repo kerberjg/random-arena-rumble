@@ -42,7 +42,7 @@ public class MeleeEnemy : BaseEnemyBehavior
         state = states.state;
 
         // check health
-        if(GetComponent<Health>().health == 0) {
+        if(!GetComponent<Health>().isAlive) {
             states.SwitchState("dead");
         }
     }

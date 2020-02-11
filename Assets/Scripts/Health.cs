@@ -8,10 +8,8 @@ public class Health : MonoBehaviour
     public bool allowResuscitation = false;
     /// Maximum health value. The health is initialized to this value
     public float maxHealth = 0;
-    public float health {
-        get;
-        private set;
-    }
+    [SerializeField]
+    private float health;
 
     void Start()
     {
