@@ -35,6 +35,7 @@ public class PlayerSpriteBehaviour : MonoBehaviour
         playerPosition = GameObject.Find("Player").GetComponent<Transform>();
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        print(mousePos);
 
         if (mousePos.x < playerPosition.position.x - xOffset) {
             playerBody.sprite = leftSprite_Torso;

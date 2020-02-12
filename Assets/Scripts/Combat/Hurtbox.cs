@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Hurtbox : MonoBehaviour
 {
@@ -15,8 +16,12 @@ public class Hurtbox : MonoBehaviour
     void Start()
     {
         // apply health modifier
+        try {
         ValueModifier modifier = GetComponentInParent<ModifierContainer>().modifier;
         maxHealth *= Mathf.Max(modifier.health, ModifierContainer.MIN_VALUE);
+        } catch (Exception e) {
+            Debug.Log("Sad Face");
+        }
 
         // initialize values
         health = maxHealth;
