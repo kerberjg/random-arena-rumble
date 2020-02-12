@@ -34,8 +34,8 @@ public class PlayerSpriteBehaviour : MonoBehaviour
     {
         playerPosition = GameObject.Find("Player").GetComponent<Transform>();
 
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        print(mousePos);
+        Vector2 mousePos = GetMousePosition();
+        Debug.Log(mousePos);
 
         if (mousePos.x < playerPosition.position.x - xOffset) {
             playerBody.sprite = leftSprite_Torso;
@@ -50,5 +50,11 @@ public class PlayerSpriteBehaviour : MonoBehaviour
             playerBody.sprite = downSprite_Torso;
             playerHead.sprite = downSprite_Head;
         }
+    }
+
+    public static Vector2 GetMousePosition() {
+        Vector3 tmpPos = Input.mousePosition;
+        tmpPos.z = 0 - Camera.main.transform.position.z; 
+        return Camera.main.ScreenToWorldPoint(tmpPos);
     }
 }

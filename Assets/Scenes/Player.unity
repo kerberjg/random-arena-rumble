@@ -1170,17 +1170,17 @@ PrefabInstance:
     - target: {fileID: 6589744786523999958, guid: f3f5f10953660b74891e582531277d84,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.35098428
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6589744786523999958, guid: f3f5f10953660b74891e582531277d84,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8068331
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6589744786523999958, guid: f3f5f10953660b74891e582531277d84,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20.94
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 6589744786523999958, guid: f3f5f10953660b74891e582531277d84,
         type: 3}
@@ -1220,6 +1220,36 @@ PrefabInstance:
     - target: {fileID: 6589744786523999958, guid: f3f5f10953660b74891e582531277d84,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9204460091739815144, guid: f3f5f10953660b74891e582531277d84,
+        type: 3}
+      propertyPath: far clip plane
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 9204460091739815147, guid: f3f5f10953660b74891e582531277d84,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9204460091739815147, guid: f3f5f10953660b74891e582531277d84,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9204460091739815147, guid: f3f5f10953660b74891e582531277d84,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9204460091739815151, guid: f3f5f10953660b74891e582531277d84,
+        type: 3}
+      propertyPath: m_TagString
+      value: MainCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 9204460093164703747, guid: f3f5f10953660b74891e582531277d84,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

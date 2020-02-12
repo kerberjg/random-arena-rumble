@@ -36,7 +36,7 @@ public class Player_GunShooting : MonoBehaviour
 
         gunBarrel.transform.rotation = playerAppearance.transform.rotation;
 
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mousePos = PlayerSpriteBehaviour.GetMousePosition();
         Vector2 aimDirection = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
 
         gunBarrel.transform.up = aimDirection;

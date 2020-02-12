@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void PlayerAiming()
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mousePos = PlayerSpriteBehaviour.GetMousePosition();
         Vector2 aimDirection_Left = new Vector2(mousePos.x - leftHandPivot.transform.position.x, mousePos.y - leftHandPivot.transform.position.y);
         Vector2 aimDirection_Right = new Vector2(mousePos.x - rightHandPivot.transform.position.x, mousePos.y - rightHandPivot.transform.position.y);
 
