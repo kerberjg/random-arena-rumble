@@ -7,13 +7,13 @@ public struct ValueModifier {
     public float speed;
     public float health;
     public float damage;
-    public float size; 
+    public float scale; 
 }
 
 public sealed class ModifierContainer : MonoBehaviour {
     public static readonly float MIN_VALUE = 0.001f;
 
     public ValueModifier modifier = new ValueModifier {
-        speed = 1f, health = 1f, damage = 1f, size = 1f
+        speed = 1f, health = 1f, damage = 1f, scale = 1f
     };
 }
