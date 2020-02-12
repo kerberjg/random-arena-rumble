@@ -14,6 +14,13 @@ public class Hurtbox : MonoBehaviour
 
     void Start()
     {
+        // apply modifier
+        ValueModifier modifier = GetComponentInParent<ModifierContainer>().modifier;
+        if(modifier.health > 0) {
+            maxHealth *= modifier.health;
+        }
+
+        // initialize values
         health = maxHealth;
     }
 
