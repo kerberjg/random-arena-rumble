@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -51,10 +51,5 @@ public class PlayerSpriteBehaviour : MonoBehaviour
             playerHead.sprite = downSprite_Head;
         }
     }
-
-    public static Vector2 GetMousePosition() {
-        Vector3 tmpPos = Input.mousePosition;
-        tmpPos.z = 0 - Camera.main.transform.position.z; 
-        return Camera.main.ScreenToWorldPoint(tmpPos);
     }
 }
