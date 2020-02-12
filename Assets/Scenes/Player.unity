@@ -754,18 +754,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!212 &842439072 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 4222231326543174968, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
-    type: 3}
-  m_PrefabInstance: {fileID: 9214501521626738556}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &1020594412 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 6595068919485598779, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
-    type: 3}
-  m_PrefabInstance: {fileID: 9214501521626738556}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1252498453
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,12 +799,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1279449116 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 8885783150438345774, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
-    type: 3}
-  m_PrefabInstance: {fileID: 9214501521626738556}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1279787228
 GameObject:
   m_ObjectHideFlags: 0
@@ -1241,44 +1223,6 @@ Transform:
   m_Father: {fileID: 1985777713}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1605955738 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9214501520749015061, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
-    type: 3}
-  m_PrefabInstance: {fileID: 9214501521626738556}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1605955740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1605955738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 179d81dbbc0642641bd0dd9912f23e8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerBody: {fileID: 1279449116}
-  playerHead: {fileID: 1020594412}
-  leftSprite_Torso: {fileID: 9007991747813085868, guid: 9378f2b52f948a94ba8a5b810abf030d,
-    type: 3}
-  rightSprite_Torso: {fileID: -619668380239592095, guid: 9378f2b52f948a94ba8a5b810abf030d,
-    type: 3}
-  upSprite_Torso: {fileID: -6608048139344178123, guid: 9378f2b52f948a94ba8a5b810abf030d,
-    type: 3}
-  downSprite_Torso: {fileID: 2790581827725428733, guid: 9378f2b52f948a94ba8a5b810abf030d,
-    type: 3}
-  leftSprite_Head: {fileID: -7166545995499388109, guid: 9378f2b52f948a94ba8a5b810abf030d,
-    type: 3}
-  rightSprite_Head: {fileID: 1703137973978655196, guid: 9378f2b52f948a94ba8a5b810abf030d,
-    type: 3}
-  upSprite_Head: {fileID: -6674531273736451801, guid: 9378f2b52f948a94ba8a5b810abf030d,
-    type: 3}
-  downSprite_Head: {fileID: -4780720426310373332, guid: 9378f2b52f948a94ba8a5b810abf030d,
-    type: 3}
-  xOffset: 2
-  yOffset: 2
 --- !u!1 &1698048853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1416,51 +1360,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 761616525, guid: 87a3ad50c2fc0404ba67ce9f8ac67761, type: 3}
-      propertyPath: gunSpriteRenderer
-      value: 
-      objectReference: {fileID: 842439072}
-    - target: {fileID: 761616525, guid: 87a3ad50c2fc0404ba67ce9f8ac67761, type: 3}
-      propertyPath: normalGun
-      value: 
-      objectReference: {fileID: -1905124873699764946, guid: 7125c11ed8ef64f4aa32d68d2bcf14ba,
-        type: 3}
-    - target: {fileID: 761616525, guid: 87a3ad50c2fc0404ba67ce9f8ac67761, type: 3}
-      propertyPath: shootSprite
-      value: 
-      objectReference: {fileID: 1551964415014356361, guid: 7125c11ed8ef64f4aa32d68d2bcf14ba,
-        type: 3}
-    - target: {fileID: 761616525, guid: 87a3ad50c2fc0404ba67ce9f8ac67761, type: 3}
-      propertyPath: muzzleFlashDelay
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1370968962, guid: 87a3ad50c2fc0404ba67ce9f8ac67761, type: 3}
-      propertyPath: gunSpriteRenderer
-      value: 
-      objectReference: {fileID: 842439072}
-    - target: {fileID: 1370968962, guid: 87a3ad50c2fc0404ba67ce9f8ac67761, type: 3}
-      propertyPath: normalGun
-      value: 
-      objectReference: {fileID: -1905124873699764946, guid: 7125c11ed8ef64f4aa32d68d2bcf14ba,
-        type: 3}
-    - target: {fileID: 1370968962, guid: 87a3ad50c2fc0404ba67ce9f8ac67761, type: 3}
-      propertyPath: shootSprite
-      value: 
-      objectReference: {fileID: 1551964415014356361, guid: 7125c11ed8ef64f4aa32d68d2bcf14ba,
-        type: 3}
-    - target: {fileID: 1370968962, guid: 87a3ad50c2fc0404ba67ce9f8ac67761, type: 3}
-      propertyPath: muzzleFlashDelay
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1884946202, guid: 87a3ad50c2fc0404ba67ce9f8ac67761, type: 3}
-      propertyPath: muzzleFlashDelay
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7015732215027041135, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
-        type: 3}
-      propertyPath: muzzleFlashDelay
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 9214501521292490981, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
         type: 3}
       propertyPath: m_LocalPosition.x

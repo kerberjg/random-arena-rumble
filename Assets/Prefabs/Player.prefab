@@ -125,10 +125,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a92732ae7e6004280bf011608faace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunSpriteRenderer: {fileID: 0}
-  normalGun: {fileID: 0}
-  shootSprite: {fileID: 0}
-  muzzleFlashDelay: 0
+  gunSpriteRenderer: {fileID: 4222231326543174968}
+  normalGun: {fileID: -1905124873699764946, guid: 7125c11ed8ef64f4aa32d68d2bcf14ba,
+    type: 3}
+  shootSprite: {fileID: 1551964415014356361, guid: 7125c11ed8ef64f4aa32d68d2bcf14ba,
+    type: 3}
+  muzzleFlashDelay: 0.1
   bullet: {fileID: 8210658849861995480, guid: 09b159bc85d3bef44a820368b520f86e, type: 3}
   gunBarrel: {fileID: 617932733}
   fireRate: 0.5
@@ -292,10 +294,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a92732ae7e6004280bf011608faace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunSpriteRenderer: {fileID: 0}
-  normalGun: {fileID: 0}
-  shootSprite: {fileID: 0}
-  muzzleFlashDelay: 0
+  gunSpriteRenderer: {fileID: 4222231326543174968}
+  normalGun: {fileID: -1905124873699764946, guid: 7125c11ed8ef64f4aa32d68d2bcf14ba,
+    type: 3}
+  shootSprite: {fileID: 1551964415014356361, guid: 7125c11ed8ef64f4aa32d68d2bcf14ba,
+    type: 3}
+  muzzleFlashDelay: 0.1
   bullet: {fileID: 8210658849861995480, guid: 09b159bc85d3bef44a820368b520f86e, type: 3}
   gunBarrel: {fileID: 823791303}
   fireRate: 1
@@ -434,7 +438,7 @@ MonoBehaviour:
     type: 3}
   shootSprite: {fileID: 1551964415014356361, guid: 7125c11ed8ef64f4aa32d68d2bcf14ba,
     type: 3}
-  muzzleFlashDelay: 0.5
+  muzzleFlashDelay: 0.1
   bullet: {fileID: 8210658849861995480, guid: 09b159bc85d3bef44a820368b520f86e, type: 3}
   gunBarrel: {fileID: 943459797}
   fireRate: 0.5
@@ -714,7 +718,7 @@ MonoBehaviour:
     type: 3}
   shootSprite: {fileID: 1551964415014356361, guid: 7125c11ed8ef64f4aa32d68d2bcf14ba,
     type: 3}
-  muzzleFlashDelay: 0.0005
+  muzzleFlashDelay: 0.1
   bullet: {fileID: 8210658849861995480, guid: 09b159bc85d3bef44a820368b520f86e, type: 3}
   gunBarrel: {fileID: 4985514128329215939}
   fireRate: 1
@@ -1314,6 +1318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9214501520749015062}
   - component: {fileID: 9214501520749015063}
+  - component: {fileID: 1605955740}
   m_Layer: 0
   m_Name: Appearance
   m_TagString: Untagged
@@ -1391,6 +1396,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1605955740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9214501520749015061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 179d81dbbc0642641bd0dd9912f23e8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerBody: {fileID: 8885783150438345774}
+  playerHead: {fileID: 6595068919485598779}
+  leftSprite_Torso: {fileID: 9007991747813085868, guid: 9378f2b52f948a94ba8a5b810abf030d,
+    type: 3}
+  rightSprite_Torso: {fileID: -619668380239592095, guid: 9378f2b52f948a94ba8a5b810abf030d,
+    type: 3}
+  upSprite_Torso: {fileID: -6608048139344178123, guid: 9378f2b52f948a94ba8a5b810abf030d,
+    type: 3}
+  downSprite_Torso: {fileID: 2790581827725428733, guid: 9378f2b52f948a94ba8a5b810abf030d,
+    type: 3}
+  leftSprite_Head: {fileID: -7166545995499388109, guid: 9378f2b52f948a94ba8a5b810abf030d,
+    type: 3}
+  rightSprite_Head: {fileID: 1703137973978655196, guid: 9378f2b52f948a94ba8a5b810abf030d,
+    type: 3}
+  upSprite_Head: {fileID: -6674531273736451801, guid: 9378f2b52f948a94ba8a5b810abf030d,
+    type: 3}
+  downSprite_Head: {fileID: -4780720426310373332, guid: 9378f2b52f948a94ba8a5b810abf030d,
+    type: 3}
+  xOffset: 2
+  yOffset: 2
 --- !u!1 &9214501521292490987
 GameObject:
   m_ObjectHideFlags: 0
