@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,11 +14,9 @@ public class Hurtbox : MonoBehaviour
 
     void Start()
     {
-        // apply modifier
+        // apply health modifier
         ValueModifier modifier = GetComponentInParent<ModifierContainer>().modifier;
-        if(modifier.health > 0) {
-            maxHealth *= modifier.health;
-        }
+        maxHealth *= Mathf.Max(modifier.health, ModifierContainer.MIN_VALUE);
 
         // initialize values
         health = maxHealth;
