@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class EnemyBehavior : MonoBehaviour {
     public ValueModifier modifier { get; private set; }
-    
 
     void LateUpdate() {
         // update modifier
