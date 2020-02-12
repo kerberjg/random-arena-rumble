@@ -1,8 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeEnemy : BaseEnemyBehavior
+public class MeleeEnemy : StalkerEnemyBehavior
 {
     [Header("FSM")]
     public string state;

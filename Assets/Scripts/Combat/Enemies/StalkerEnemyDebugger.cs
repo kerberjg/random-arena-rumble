@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseEnemyDebugger : MonoBehaviour
+public class StalkerEnemyDebugger : MonoBehaviour
 {
-    public BaseEnemyBehavior enemy;
+    public StalkerEnemyBehavior enemy;
     // Start is called before the first frame update
     void Start()
     {
