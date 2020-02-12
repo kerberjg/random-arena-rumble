@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("Player");
+        SceneManager.LoadScene("arena_Sand");
     }
 
     public void QuitGame ()
