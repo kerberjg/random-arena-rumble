@@ -1,5 +1,52 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &289088225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 289088226}
+  - component: {fileID: 289088228}
+  m_Layer: 0
+  m_Name: StalkerDebugger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &289088226
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 289088225}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8887761849016728860}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &289088228
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 289088225}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &8887761847138320694
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,7 +59,7 @@ GameObject:
   - component: {fileID: 8887761847138320651}
   - component: {fileID: 8887761847138320692}
   m_Layer: 0
-  m_Name: EnemyDebugger
+  m_Name: FollowDebugger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,11 +119,12 @@ GameObject:
   - component: {fileID: 8887761848384980138}
   - component: {fileID: 8887761848384980139}
   - component: {fileID: 8887761848384980180}
-  - component: {fileID: 8887761848384980181}
   - component: {fileID: 8887761848384980182}
+  - component: {fileID: 5053705923463952122}
+  - component: {fileID: 2008373945}
   m_Layer: 0
-  m_Name: Enemy
-  m_TagString: Untagged
+  m_Name: MeleeEnemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,8 +138,9 @@ Transform:
   m_GameObject: {fileID: 8887761848384980183}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_Children:
+  - {fileID: 1904753034124922899}
   m_Father: {fileID: 8887761849016728860}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -142,19 +191,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &8887761848384980181
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8887761848384980183}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8887761848384980182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,9 +205,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableTracking: 1
   target: {fileID: 0}
-  updateFrequency: 5
+  updateFrequency: 2
   enableFollow: 1
-  minTargetDistance: 3
+  minTargetDistance: 4
   maxTargetDistance: 0
   distanceTolerance: 0.1
   followSpeed: 3
@@ -179,9 +215,47 @@ MonoBehaviour:
   _prevPos: {x: 0, y: 0, z: 0}
   _lastUpdate: 0
   _tmpDist: {x: 0, y: 0, z: 0}
-  circleSpeed: 2
-  stabInSpeed: 5
-  stabOutSpeed: 3
+  state: 
+  circleTimeRange: {x: 1, y: 2}
+  circleLeftSpeed: 90
+  circleRightSpeed: 30
+  maxCircles: 4
+  stabInSpeed: 6
+  stabOutSpeed: 4
+  stabDistance: 0.5
+  circleAngle: 0
+  stalkerDebugger: {fileID: 289088225}
+--- !u!114 &5053705923463952122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8887761848384980183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1620a9e04a334c70a8f4794793ada2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowResuscitation: 0
+  maxHealth: 3
+  health: 0
+--- !u!58 &2008373945
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8887761848384980183}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &8887761849016728861
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,7 +266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8887761849016728860}
   m_Layer: 0
-  m_Name: EnemyContainer
+  m_Name: MeleeEnemyContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -211,6 +285,82 @@ Transform:
   m_Children:
   - {fileID: 8887761848384980138}
   - {fileID: 8887761847138320693}
+  - {fileID: 289088226}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &4548010963476670055
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8887761848384980138}
+    m_Modifications:
+    - target: {fileID: 942054326408266841, guid: 4d11df1a1756a42c6bd88eac62c103ac,
+        type: 3}
+      propertyPath: m_Name
+      value: Knife
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698444617216882292, guid: 4d11df1a1756a42c6bd88eac62c103ac,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698444617216882292, guid: 4d11df1a1756a42c6bd88eac62c103ac,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698444617216882292, guid: 4d11df1a1756a42c6bd88eac62c103ac,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698444617216882292, guid: 4d11df1a1756a42c6bd88eac62c103ac,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698444617216882292, guid: 4d11df1a1756a42c6bd88eac62c103ac,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698444617216882292, guid: 4d11df1a1756a42c6bd88eac62c103ac,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698444617216882292, guid: 4d11df1a1756a42c6bd88eac62c103ac,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698444617216882292, guid: 4d11df1a1756a42c6bd88eac62c103ac,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698444617216882292, guid: 4d11df1a1756a42c6bd88eac62c103ac,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698444617216882292, guid: 4d11df1a1756a42c6bd88eac62c103ac,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698444617216882292, guid: 4d11df1a1756a42c6bd88eac62c103ac,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d11df1a1756a42c6bd88eac62c103ac, type: 3}
+--- !u!4 &1904753034124922899 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2698444617216882292, guid: 4d11df1a1756a42c6bd88eac62c103ac,
+    type: 3}
+  m_PrefabInstance: {fileID: 4548010963476670055}
+  m_PrefabAsset: {fileID: 0}
