@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class Player_GunShooting : MonoBehaviour
 {
+    public SpriteRenderer gunSpriteRenderer;
+    public Sprite normalGun;
+    public Sprite shootSprite;
+    float shootTimer;
+    bool isShooting;
+    public float muzzleFlashDelay;
+    
+
     public GameObject bullet;
     public GameObject gunBarrel;
     GameObject playerAppearance;
+
     public float fireRate;
-    float timeBetweenBullets;
+    public float timeBetweenBullets;
+    public float bulletSpeed;
+    public float damage;
+    public float lifeTime_Bullet;
+    public bool piercing;
+
 
     private void Start()
-    {
-        
+    {       
         playerAppearance = GameObject.Find("Appearance");
     }
 
@@ -23,12 +36,41 @@ public class Player_GunShooting : MonoBehaviour
 
         gunBarrel.transform.rotation = playerAppearance.transform.rotation;
 
-        if(Input.GetKey(KeyCode.Space) && timeBetweenBullets > fireRate) {
-            
-            //Shoot
-            Instantiate(bullet, gunBarrel.transform.position, playerAppearance.transform.rotation);
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 aimDirection = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
 
-            timeBetweenBullets = 0;
+        gunBarrel.transform.up = aimDirection;
+
+        if (Input.GetKey(KeyCode.Mouse0) && timeBetweenBullets > fireRate) {
+            Shoot();
         }
+
+        if (isShooting) {
+            shootTimer += Time.deltaTime;
+
+            if(shootTimer >= muzzleFlashDelay) {
+                gunSpriteRenderer.sprite = normalGun;
+                shootTimer = 0f;
+                isShooting = false;
+            }
+        }
+
+    }
+
+    private void Shoot()
+    {
+        isShooting = true;
+
+        GameObject b = Instantiate(bullet, gunBarrel.transform.position, gunBarrel.transform.rotation);
+        b.GetComponent<Bullet>().targetTag.Add("Enemy");
+        b.GetComponent<Bullet>().piercing = piercing;
+        b.GetComponent<Bullet>().damage = damage;
+        b.GetComponent<Bullet>().bulletSpeed = bulletSpeed;
+        b.GetComponent<Bullet>().lifeTime_Bullet = lifeTime_Bullet;
+
+        timeBetweenBullets = 0;
+
+        gunSpriteRenderer.sprite = shootSprite;
+        
     }
 }

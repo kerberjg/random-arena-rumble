@@ -5,20 +5,20 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 
 {
-    GameObject playerSprite;
+    public GameObject leftHandPivot;
+    public GameObject rightHandPivot;
+    BoxCollider2D playerCollider;
+    
     Rigidbody2D rigidBody;
 
     public float speed = 5f;
     Vector2 movement;
 
-    //Aim
-    int layerMask;
-
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
-        layerMask = LayerMask.GetMask("AimLayer");
-        playerSprite = GameObject.Find("Appearance");
+        playerCollider = GetComponent<BoxCollider2D>();
+        //playerSprite = GameObject.Find("Appearance");
     }
     void Update()
 
@@ -33,13 +33,17 @@ public class PlayerMovement : MonoBehaviour
     private void PlayerAiming()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 aimDirection = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
+        Vector2 aimDirection_Left = new Vector2(mousePos.x - leftHandPivot.transform.position.x, mousePos.y - leftHandPivot.transform.position.y);
+        Vector2 aimDirection_Right = new Vector2(mousePos.x - rightHandPivot.transform.position.x, mousePos.y - rightHandPivot.transform.position.y);
 
-        playerSprite.transform.up = aimDirection;
+        leftHandPivot.transform.up = aimDirection_Left;
+        rightHandPivot.transform.up = aimDirection_Right;
+
     }
 
     void FixedUpdate()
     {
         transform.Translate(movement.x * speed * Time.fixedDeltaTime, movement.y * speed * Time.fixedDeltaTime, 0); //Move player based on input.
     }
+
 }
