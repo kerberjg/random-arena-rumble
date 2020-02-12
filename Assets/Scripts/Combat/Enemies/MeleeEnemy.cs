@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -93,9 +93,9 @@ class CircleState : StateBehavior<MeleeEnemy> {
         else {
 
             if(this.direction == CircleDirection.left)
-                machine.circleAngle += machine.circleLeftSpeed * Mathf.Deg2Rad * Time.deltaTime;
+                machine.circleAngle += machine.circleLeftSpeed * machine.modifier.speed * Mathf.Deg2Rad * Time.deltaTime;
             else
-                machine.circleAngle -= machine.circleRightSpeed * Mathf.Deg2Rad * Time.deltaTime;
+                machine.circleAngle -= machine.circleRightSpeed * machine.modifier.speed * Mathf.Deg2Rad * Time.deltaTime;
         }
 
         // calculate movement target (including circling angle)
@@ -147,7 +147,7 @@ abstract class BaseStabState : StateBehavior<MeleeEnemy> {
     }
     
     public Vector3 CalculateMovement(float speed) {
-        return direction * speed * Time.deltaTime;
+        return direction * speed * machine.modifier.speed * Time.deltaTime;
     }
 }
 
