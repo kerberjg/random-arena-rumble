@@ -50,17 +50,19 @@ public class EnemyManager : MonoBehaviour
             
         }
 
-        if (ongoingWave && GameObject.FindGameObjectsWithTag("Enemy") == null) {
+        if (ongoingWave && GameObject.FindGameObjectsWithTag("Enemy").Length == 0) {
             print("Wave Finished");
             ongoingWave = false;
+            currentEnemies = 0;
         }
 
         //IF ongoingWave and nextWave are false we are currently in SlotMachine state.
 
         if(!ongoingWave && !nextWave) {
             //Do the thing u want before next wave.
-            //Start next wave by putting nextWave to true
-            //When starting new wave increment currentWave by 1 and set add waveIncrement to waveEnemies
+            nextWave = true;
+            currentWave++;
+            waveEnemies = waveEnemies + enemyIncrement;
             
         }
     }
