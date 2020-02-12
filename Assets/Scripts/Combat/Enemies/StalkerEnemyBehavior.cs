@@ -5,7 +5,7 @@ using UnityEngine;
 enum ComparisonResult {
     lesser, equals, greater
 }
-abstract public class BaseEnemyBehavior : MonoBehaviour
+abstract public class StalkerEnemyBehavior : EnemyBehavior
 {
     [Header("Tracking options")]
     public bool enableTracking = true;
@@ -62,12 +62,12 @@ abstract public class BaseEnemyBehavior : MonoBehaviour
                 ||
                 (minTargetDistance > 0 && CompareDistances(distance, minTargetDistance, distanceTolerance) > 0)
             ) {
-                _tmpDist = this.transform.position - _tmpDist * followSpeed * Time.deltaTime;
+                _tmpDist = this.transform.position - _tmpDist * followSpeed * modifier.speed * Time.deltaTime;
                 Debug.Log("too far, follow");
             }
             // move away from the target
             else if(minTargetDistance > 0 && CompareDistances(distance, minTargetDistance, distanceTolerance) < 0) {
-                _tmpDist = this.transform.position + _tmpDist * followSpeed * Time.deltaTime;
+                _tmpDist = this.transform.position + _tmpDist * followSpeed * modifier.speed * Time.deltaTime;
                 Debug.Log("too close, follow");
             } else {
                 Debug.Log("within constraints, follow");
