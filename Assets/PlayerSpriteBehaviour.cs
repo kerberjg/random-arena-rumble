@@ -22,34 +22,37 @@ public class PlayerSpriteBehaviour : MonoBehaviour
 
     public float xOffset;
     public float yOffset;
+    public int rotationSteps = 4;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private float currentStep;
 
     // Update is called once per frame
     void Update()
     {
         playerPosition = GameObject.Find("Player").GetComponent<Transform>();
 
-        Vector2 mousePos = GetMousePosition();
-        Debug.Log(mousePos);
+        Vector2 mousePos = MouseUtils.GetMousePosition();
+        float aimAngle = MouseUtils.GetAimAngle(transform.position) * Mathf.Rad2Deg + 180;
+        currentStep = Mathf.RoundToInt( aimAngle / (360f / rotationSteps) ) % 4;
 
-        if (mousePos.x < playerPosition.position.x - xOffset) {
-            playerBody.sprite = leftSprite_Torso;
-            playerHead.sprite = leftSprite_Head;
-        } else if (mousePos.x < playerPosition.position.x && mousePos.x > playerPosition.position.x - xOffset && mousePos.y > playerPosition.position.y) {
-            playerBody.sprite = upSprite_Torso;
-            playerHead.sprite = upSprite_Head;
-        } else if(mousePos.x > playerPosition.position.x + xOffset) {
-            playerBody.sprite = rightSprite_Torso;
-            playerHead.sprite = rightSprite_Head;
-        } else if(mousePos.x > playerPosition.position.x && mousePos.x < playerPosition.position.x + xOffset && mousePos.y < playerPosition.position.y) {
-            playerBody.sprite = downSprite_Torso;
-            playerHead.sprite = downSprite_Head;
+        switch(currentStep) {
+            default:
+            case 0:
+                playerBody.sprite = rightSprite_Torso;
+                playerHead.sprite = rightSprite_Head;
+                break;
+            case 1:
+                playerBody.sprite = upSprite_Torso;
+                playerHead.sprite = upSprite_Head;
+                break;
+            case 2:
+                playerBody.sprite = leftSprite_Torso;
+                playerHead.sprite = leftSprite_Head;
+                break;
+            case 3:
+                playerBody.sprite = downSprite_Torso;
+                playerHead.sprite = downSprite_Head;
+                break;
         }
-    }
     }
 }
