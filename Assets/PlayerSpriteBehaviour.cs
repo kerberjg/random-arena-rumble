@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,21 +8,30 @@ public class PlayerSpriteBehaviour : MonoBehaviour
     public SpriteRenderer playerBody;
     public SpriteRenderer playerHead;
 
-    public Sprite leftSprite_Torso;
-    public Sprite rightSprite_Torso;
-    public Sprite upSprite_Torso;
-    public Sprite downSprite_Torso;
+    [Header("Torso sprites")]
+    public Sprite rSprite_Torso;
+    public Sprite ruSprite_Torso;
+    public Sprite uSprite_Torso;
+    public Sprite ulSprite_Torso;
+    public Sprite lSprite_Torso;
+    public Sprite ldSprite_Torso;
+    public Sprite dSprite_Torso;
+    public Sprite drSprite_Torso;
 
-    public Sprite leftSprite_Head;
-    public Sprite rightSprite_Head;
-    public Sprite upSprite_Head;
-    public Sprite downSprite_Head;
+    [Header("Head sprites")]
+    public Sprite rSprite_Head;
+    public Sprite ruSprite_Head;
+    public Sprite uSprite_Head;
+    public Sprite ulSprite_Head;
+    public Sprite lSprite_Head;
+    public Sprite ldSprite_Head;
+    public Sprite dSprite_Head;
+    public Sprite drSprite_Head;
 
     Transform playerPosition;
 
-    public float xOffset;
-    public float yOffset;
-    public int rotationSteps = 4;
+    [Header("Rotation settings")]
+    [Range(4,8)] public int rotationSteps = 4;
 
     [SerializeField] private float currentStep;
 
@@ -33,25 +42,50 @@ public class PlayerSpriteBehaviour : MonoBehaviour
 
         Vector2 mousePos = MouseUtils.GetMousePosition();
         float aimAngle = MouseUtils.GetAimAngle(transform.position) * Mathf.Rad2Deg + 180;
-        currentStep = Mathf.RoundToInt( aimAngle / (360f / rotationSteps) ) % 4;
+        int stepAngle = Mathf.RoundToInt(360f / rotationSteps);
+        currentStep = Mathf.RoundToInt( aimAngle / stepAngle ) % 4 * stepAngle;
 
         switch(currentStep) {
             default:
             case 0:
-                playerBody.sprite = rightSprite_Torso;
-                playerHead.sprite = rightSprite_Head;
+            case 360:
+                playerBody.sprite = rSprite_Torso;
+                playerHead.sprite = rSprite_Head;
                 break;
-            case 1:
-                playerBody.sprite = upSprite_Torso;
-                playerHead.sprite = upSprite_Head;
+            
+            case 45:
+                playerBody.sprite = ruSprite_Torso;
+                playerHead.sprite = ruSprite_Head;
                 break;
-            case 2:
-                playerBody.sprite = leftSprite_Torso;
-                playerHead.sprite = leftSprite_Head;
+
+            case 90:
+                playerBody.sprite = uSprite_Torso;
+                playerHead.sprite = uSprite_Head;
                 break;
-            case 3:
-                playerBody.sprite = downSprite_Torso;
-                playerHead.sprite = downSprite_Head;
+
+            case 135:
+                playerBody.sprite = ulSprite_Torso;
+                playerHead.sprite = ulSprite_Head;
+                break;
+
+            case 180:
+                playerBody.sprite = lSprite_Torso;
+                playerHead.sprite = lSprite_Head;
+                break;
+
+            case 225:
+                playerBody.sprite = ldSprite_Torso;
+                playerHead.sprite = ldSprite_Head;
+                break;
+            
+            case 270:
+                playerBody.sprite = dSprite_Torso;
+                playerHead.sprite = dSprite_Head;
+                break;
+
+            case 315:
+                playerBody.sprite = drSprite_Torso;
+                playerHead.sprite = drSprite_Head;
                 break;
         }
     }

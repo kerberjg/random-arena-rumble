@@ -1441,21 +1441,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBody: {fileID: 8885783150438345774}
   playerHead: {fileID: 6595068919485598779}
-  rSprite_Torso: {fileID: 0}
+  rSprite_Torso: {fileID: -619668380239592095, guid: 9378f2b52f948a94ba8a5b810abf030d,
+    type: 3}
   ruSprite_Torso: {fileID: 0}
-  uSprite_Torso: {fileID: 0}
+  uSprite_Torso: {fileID: -6608048139344178123, guid: 9378f2b52f948a94ba8a5b810abf030d,
+    type: 3}
   ulSprite_Torso: {fileID: 0}
-  lSprite_Torso: {fileID: 0}
+  lSprite_Torso: {fileID: 9007991747813085868, guid: 9378f2b52f948a94ba8a5b810abf030d,
+    type: 3}
   ldSprite_Torso: {fileID: 0}
-  dSprite_Torso: {fileID: 0}
+  dSprite_Torso: {fileID: 2790581827725428733, guid: 9378f2b52f948a94ba8a5b810abf030d,
+    type: 3}
   drSprite_Torso: {fileID: 0}
-  rSprite_Head: {fileID: 0}
+  rSprite_Head: {fileID: 1703137973978655196, guid: 9378f2b52f948a94ba8a5b810abf030d,
+    type: 3}
   ruSprite_Head: {fileID: 0}
-  uSprite_Head: {fileID: 0}
+  uSprite_Head: {fileID: -6674531273736451801, guid: 9378f2b52f948a94ba8a5b810abf030d,
+    type: 3}
   ulSprite_Head: {fileID: 0}
-  lSprite_Head: {fileID: 0}
+  lSprite_Head: {fileID: -7166545995499388109, guid: 9378f2b52f948a94ba8a5b810abf030d,
+    type: 3}
   ldSprite_Head: {fileID: 0}
-  dSprite_Head: {fileID: 0}
+  dSprite_Head: {fileID: -4780720426310373332, guid: 9378f2b52f948a94ba8a5b810abf030d,
+    type: 3}
   drSprite_Head: {fileID: 0}
   rotationSteps: 4
   currentStep: 0
