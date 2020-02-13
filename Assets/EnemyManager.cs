@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyManager : MonoBehaviour
 {
     public GameObject EnemyContainer;
     public Transform spawnPoint_Enemy;
+    Text waveText;
 
     public int enemyIncrement;
     public int enemyCountStart;
@@ -16,12 +18,17 @@ public class EnemyManager : MonoBehaviour
     public float spawnDelay;
     float timer_enemySpawner;
 
-    public bool nextWave = true;
+    public float waveDelay;
+    float timer_BetweenWaves;
+
+    public bool nextWave = false;
     bool ongoingWave = false;
 
     private void Start()
     {
         waveEnemies = enemyCountStart;
+
+        waveText = GameObject.Find("WaveText").GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -32,7 +39,9 @@ public class EnemyManager : MonoBehaviour
 
         if (nextWave) {
 
-            if(currentEnemies < waveEnemies && timer_enemySpawner >= spawnDelay) {
+            waveText.enabled = false;
+
+            if (currentEnemies < waveEnemies && timer_enemySpawner >= spawnDelay) {
 
                 EnemyContainer.GetComponentInChildren<MeleeEnemy>().target = GameObject.Find("Player").GetComponent<Transform>();
                 EnemyContainer.GetComponentInChildren<Hurtbox>().destroyOnDeath = true;
@@ -54,15 +63,27 @@ public class EnemyManager : MonoBehaviour
             print("Wave Finished");
             ongoingWave = false;
             currentEnemies = 0;
+
+            waveText.enabled = true;
+            currentWave++;
+            waveText.text = "Wave " + currentWave;
         }
 
         //IF ongoingWave and nextWave are false we are currently in SlotMachine state.
 
         if(!ongoingWave && !nextWave) {
             //Do the thing u want before next wave.
-            nextWave = true;
-            currentWave++;
-            waveEnemies = waveEnemies + enemyIncrement;
+            timer_BetweenWaves += Time.deltaTime;
+
+            if(timer_BetweenWaves >= waveDelay) {
+
+                nextWave = true;
+                
+                waveEnemies = waveEnemies + enemyIncrement;
+
+                timer_BetweenWaves = 0f;
+                
+            }
             
         }
     }
