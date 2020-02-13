@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ModifierWeapons : MonoBehaviour
 {
-    public enum WeaponType { pistol, sniper, akimbo };
     public int weaponType = 1;
     public WeaponType currentWeapon;
 
