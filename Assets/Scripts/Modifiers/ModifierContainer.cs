@@ -19,9 +19,16 @@ public enum HatType {
     top
 }
 
+public enum ModifierType {
+    incremental,
+    temporary
+}
+
 [System.Serializable]
 public struct ValueModifier {
     public static readonly float MIN_VALUE = 0.001f;
+
+    public ModifierType type;
 
     public float speed;
     public float health;
