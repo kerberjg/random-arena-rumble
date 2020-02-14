@@ -8,25 +8,20 @@ public class GameManager : MonoBehaviour
 {
 
     public Hurtbox playerHurtBox;
-    public bool isPlaying = true;
-
-    static bool gameHasEnded = false;
+    public bool isArenaPlaying = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        try {
-        playerHurtBox = GameObject.Find("Player").GetComponent<Hurtbox>();
-        } catch(Exception e) {
-            Debug.Log("No Player in Scene");
+        if(isArenaPlaying) {
+            playerHurtBox = GameObject.Find("Player").GetComponent<Hurtbox>();
         }
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(isPlaying && playerHurtBox != null && playerHurtBox.isAlive == false ) {
+        if(isArenaPlaying && playerHurtBox != null && playerHurtBox.isAlive == false ) {
             Debug.Log("aww he ded");
             GameOver();
         }
@@ -34,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        gameHasEnded = false;
+        isArenaPlaying = true;
         SceneManager.LoadScene("arena_Sand");
     }
 
@@ -47,8 +42,8 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        if (gameHasEnded == false) {
-            gameHasEnded = true;
+        if (isArenaPlaying) {
+            isArenaPlaying = false;
             Debug.Log("Goes to Game Over screen");
             SceneManager.LoadScene("GameOver");
         }
