@@ -5,8 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 
 {
-    public GameObject leftHandPivot;
-    public GameObject rightHandPivot;
+    public GameObject shouldersPivot;
     BoxCollider2D playerCollider;
     
     Rigidbody2D rigidBody;
@@ -32,13 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void PlayerAiming()
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 aimDirection_Left = new Vector2(mousePos.x - leftHandPivot.transform.position.x, mousePos.y - leftHandPivot.transform.position.y);
-        Vector2 aimDirection_Right = new Vector2(mousePos.x - rightHandPivot.transform.position.x, mousePos.y - rightHandPivot.transform.position.y);
-
-        leftHandPivot.transform.up = aimDirection_Left;
-        rightHandPivot.transform.up = aimDirection_Right;
-
+        shouldersPivot.transform.up = MouseUtils.GetAimDirection(transform.position);
     }
 
     void FixedUpdate()
