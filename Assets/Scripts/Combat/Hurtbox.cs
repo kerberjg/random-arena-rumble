@@ -10,8 +10,8 @@ public class Hurtbox : MonoBehaviour
     public bool destroyOnDeath = false;
     /// Maximum health value. The health is initialized to this value
     public float maxHealth = 0;
-    [SerializeField]
-    private float health;
+    
+    public float health;
 
     void Start()
     {

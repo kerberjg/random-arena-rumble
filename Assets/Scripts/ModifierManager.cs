@@ -22,58 +22,11 @@ public class ModifierManager : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-
-            modifierPlayer.modifierApplied = false;
-
-            nextPlayerModifier = UnityEngine.Random.Range(1, totalModifers + 1);
-
-            while (excludeModifiers.Contains(nextPlayerModifier)) {
-                nextPlayerModifier = UnityEngine.Random.Range(1, totalModifers + 1);
-            }
-
-            switch (nextPlayerModifier) {
-                case 1:
-                    print("First");
-                    modifierWeapons.currentWeapon = ModifierWeapons.WeaponType.pistol;
-                    excludeModifiers.Add(nextPlayerModifier); //Player can't recieve pistol because player has pistol.
-                    excludeModifiers.Remove(5); //Player can now recieve Sniper again!
-                    break;
-                case 2:
-                    print("Second");
-                    modifierPlayer.nextModifier = ModifierPlayer.PlayerModifiers.speedDown;
-                    modifierPlayer.ApplyModifierPlayer();
-                    break;
-                case 3:
-                    print("Third");
-                    modifierWeapons.currentWeapon = ModifierWeapons.WeaponType.akimbo;
-                    excludeModifiers.Add(nextPlayerModifier); //Player can't recieve Akimbo anymore because player has akimbo.
-                    break;
-                case 4:
-                    print("Fourth");
-                    modifierPlayer.nextModifier = ModifierPlayer.PlayerModifiers.speedUp;
-                    modifierPlayer.ApplyModifierPlayer();
-                    break;
-                case 5:
-                    print("Fifth");
-                    modifierWeapons.currentWeapon = ModifierWeapons.WeaponType.sniper;
-                    excludeModifiers.Add(nextPlayerModifier); //Player can't recieve sniper because player has sniper.
-                    excludeModifiers.Remove(1); //Player can now recieve Pistol again!
-                    break;
-                case 6:
-                    print("Sixth");
-                    modifierPlayer.nextModifier = ModifierPlayer.PlayerModifiers.sizeUp;
-                    modifierPlayer.ApplyModifierPlayer();
-                    break;
-                case 7:
-                    print("Seventh");
-                    modifierPlayer.nextModifier = ModifierPlayer.PlayerModifiers.sizeDown;
-                    modifierPlayer.ApplyModifierPlayer();
-                    break;
-            }
+        if (Input.GetKeyDown(KeyCode.Alpha9)) {
+            ModifyPlayer();
         }
-        
 
+        /*
         //MANUAL MODIFIER SETTINGS FOR TESTING
         if (Input.GetKey(KeyCode.Alpha1)) {
             modifierWeapons.currentWeapon = ModifierWeapons.WeaponType.pistol; //SWAP TO PISTOL
@@ -102,6 +55,57 @@ public class ModifierManager : MonoBehaviour
 
             modifierPlayer.SizeDown();
         }
+        */
+    }
 
+    public void ModifyPlayer()
+    {
+        modifierPlayer.modifierApplied = false;
+
+        nextPlayerModifier = UnityEngine.Random.Range(1, totalModifers + 1);
+
+        while (excludeModifiers.Contains(nextPlayerModifier)) {
+            nextPlayerModifier = UnityEngine.Random.Range(1, totalModifers + 1);
+        }
+
+        switch (nextPlayerModifier) {
+            case 1:
+                print("First");
+                modifierWeapons.currentWeapon = ModifierWeapons.WeaponType.pistol;
+                excludeModifiers.Add(nextPlayerModifier); //Player can't recieve pistol because player has pistol.
+                excludeModifiers.Remove(5); //Player can now recieve Sniper again!
+                break;
+            case 2:
+                print("Second");
+                modifierPlayer.nextModifier = ModifierPlayer.PlayerModifiers.speedDown;
+                modifierPlayer.ApplyModifierPlayer();
+                break;
+            case 3:
+                print("Third");
+                modifierWeapons.currentWeapon = ModifierWeapons.WeaponType.akimbo;
+                excludeModifiers.Add(nextPlayerModifier); //Player can't recieve Akimbo anymore because player has akimbo.
+                break;
+            case 4:
+                print("Fourth");
+                modifierPlayer.nextModifier = ModifierPlayer.PlayerModifiers.speedUp;
+                modifierPlayer.ApplyModifierPlayer();
+                break;
+            case 5:
+                print("Fifth");
+                modifierWeapons.currentWeapon = ModifierWeapons.WeaponType.sniper;
+                excludeModifiers.Add(nextPlayerModifier); //Player can't recieve sniper because player has sniper.
+                excludeModifiers.Remove(1); //Player can now recieve Pistol again!
+                break;
+            case 6:
+                print("Sixth");
+                modifierPlayer.nextModifier = ModifierPlayer.PlayerModifiers.sizeUp;
+                modifierPlayer.ApplyModifierPlayer();
+                break;
+            case 7:
+                print("Seventh");
+                modifierPlayer.nextModifier = ModifierPlayer.PlayerModifiers.sizeDown;
+                modifierPlayer.ApplyModifierPlayer();
+                break;
+        }
     }
 }

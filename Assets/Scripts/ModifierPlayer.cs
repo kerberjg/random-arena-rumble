@@ -53,6 +53,7 @@ public class ModifierPlayer : MonoBehaviour
         } else if (playerTransform.localScale.x == minSize) {
             playerHurtBox.maxHealth = tinyHealth;
         }
+        playerHurtBox.health = playerHurtBox.maxHealth;
     }
 
     public void SizeDown()
