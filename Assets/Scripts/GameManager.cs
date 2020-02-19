@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -7,7 +7,14 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    [Header("Game state")]
+    public float score;
+    public float highScore;
+    public ValueModifier enemyModifier;
+    public ValueModifier playerModifier;
+    // public ArenaModifier arenaModifier;
 
+    [Header("Scene management")]
     public Hurtbox playerHurtBox;
     public bool isArenaPlaying = true;
 

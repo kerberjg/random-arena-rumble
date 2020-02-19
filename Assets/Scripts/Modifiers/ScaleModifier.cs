@@ -9,9 +9,9 @@ public class ScaleModifier : MonoBehaviour {
     private float _previousScale;
 
     void LateUpdate() {
-        // apply health modifier
+        // apply scale modifier
         ValueModifier modifier = GetComponentInParent<ModifierContainer>().modifier;
-        float newScale = Mathf.Max(modifier.scale, ModifierContainer.MIN_VALUE);
+        float newScale = Mathf.Max(modifier.scale, ValueModifier.MIN_VALUE);
 
         if(scale != newScale) {
             _previousScale = scale;

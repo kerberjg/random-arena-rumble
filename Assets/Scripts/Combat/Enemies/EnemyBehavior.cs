@@ -8,12 +8,6 @@ public abstract class EnemyBehavior : MonoBehaviour {
 
     void LateUpdate() {
         // update modifier
-        try {
-
-        this.modifier = GetComponentInParent<ModifierContainer>().modifier;
-        } catch(Exception e) {
-            this.modifier = new ValueModifier() { speed = 1f };
-            print("Enemy is Sad");
-        }
+        this.modifier = ValueModifier.TryGetModifier(this);
     } 
 }

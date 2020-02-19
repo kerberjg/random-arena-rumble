@@ -63,14 +63,14 @@ abstract public class StalkerEnemyBehavior : EnemyBehavior
                 (minTargetDistance > 0 && CompareDistances(distance, minTargetDistance, distanceTolerance) > 0)
             ) {
                 _tmpDist = this.transform.position - _tmpDist * followSpeed * modifier.speed * Time.deltaTime;
-                Debug.Log("too far, follow");
+                // Debug.Log("too far, follow");
             }
             // move away from the target
             else if(minTargetDistance > 0 && CompareDistances(distance, minTargetDistance, distanceTolerance) < 0) {
                 _tmpDist = this.transform.position + _tmpDist * followSpeed * modifier.speed * Time.deltaTime;
-                Debug.Log("too close, follow");
+                // Debug.Log("too close, follow");
             } else {
-                Debug.Log("within constraints, follow");
+                // Debug.Log("within constraints, follow");
                 return;
             }
         }
@@ -78,12 +78,12 @@ abstract public class StalkerEnemyBehavior : EnemyBehavior
         else {
             if(maxTargetDistance > 0 && CompareDistances(distance, maxTargetDistance, distanceTolerance) > 0) {
                 _tmpDist = targetPos + _tmpDist * maxTargetDistance;
-                Debug.Log("over max, no follow");
+                // Debug.Log("over max, no follow");
             } else if(minTargetDistance > 0 && CompareDistances(distance, minTargetDistance, distanceTolerance) < 0) {
                 _tmpDist = targetPos + _tmpDist * minTargetDistance;
-                Debug.Log("over max, no follow");
+                // Debug.Log("over max, no follow");
             } else {
-                Debug.Log("within constraints, no follow");
+                // Debug.Log("within constraints, no follow");
                 return;
             }
         }

@@ -16,12 +16,7 @@ public class Hurtbox : MonoBehaviour
     void Start()
     {
         // apply health modifier
-        try {
-        ValueModifier modifier = GetComponentInParent<ModifierContainer>().modifier;
-        maxHealth *= Mathf.Max(modifier.health, ModifierContainer.MIN_VALUE);
-        } catch (Exception e) {
-            Debug.Log("Sad Face");
-        }
+        maxHealth *= Mathf.Max(ValueModifier.TryGetModifier(this).health, ValueModifier.MIN_VALUE);
 
         // initialize values
         health = maxHealth;
