@@ -72,6 +72,15 @@ public struct ValueModifier {
         this.leftWeapon = WeaponType.none;
         this.rightWeapon = WeaponType.none;
     }
+
+    public static ValueModifier TryGetModifier(Component obj) {
+        try {
+            ValueModifier modifier = obj.GetComponentInParent<ModifierContainer>().modifier;
+            return modifier;
+        } catch (Exception e) {
+            return ValueModifier.Default();
+        }
+    }
 }
 
 public class ModifierContainer : MonoBehaviour {

@@ -13,30 +13,24 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5f;
     Vector2 movement;
 
-    void Start()
-    {
+    void Start() {
         rigidBody = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
-        //playerSprite = GameObject.Find("Appearance");
     }
-    void Update()
-
-    {
+    void Update() {
         movement.x = Input.GetAxisRaw("Horizontal"); //Get Horizontal Input
         movement.y = Input.GetAxisRaw("Vertical"); //Get Vertical Input
 
         PlayerAiming();
-
     }
 
-    private void PlayerAiming()
-    {
+    private void PlayerAiming() {
         shouldersPivot.transform.up = MouseUtils.GetAimDirection(transform.position);
     }
 
-    void FixedUpdate()
-    {
-        transform.Translate(movement.x * speed * Time.fixedDeltaTime, movement.y * speed * Time.fixedDeltaTime, 0); //Move player based on input.
+    void FixedUpdate() {
+        float speed = this.speed * ValueModifier.TryGetModifier(this).speed;
+        transform.Translate(movement * speed * Time.fixedDeltaTime); //Move player based on input.
     }
 
 }
