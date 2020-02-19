@@ -86,4 +86,5 @@ public struct ValueModifier {
 
 public class ModifierContainer : MonoBehaviour {
     public ValueModifier modifier = ValueModifier.Default();
+    public ArenaModifier arena;
 }
