@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeEnemy : BaseEnemyBehavior
+public class MeleeEnemy : StalkerEnemyBehavior
 {
     [Header("FSM")]
     public string state;
@@ -16,6 +16,7 @@ public class MeleeEnemy : BaseEnemyBehavior
     [Header("Melee (stabbing) behavior")]
     public float stabInSpeed = 5f;
     public float stabOutSpeed = 3f;
+    public float stabStalkingTime = 1f;
     public float stabDistance = 0.5f;
 
     [Header("Melee debug")]
@@ -65,6 +66,8 @@ class CircleState : StateBehavior<MeleeEnemy> {
 
     public CircleState(MeleeEnemy m) : base(m) {}
     public override void Mount() {
+        machine.enableTracking = true;
+
         // sets movement direction and timing
         ToggleDirection();
 
@@ -93,9 +96,9 @@ class CircleState : StateBehavior<MeleeEnemy> {
         else {
 
             if(this.direction == CircleDirection.left)
-                machine.circleAngle += machine.circleLeftSpeed * Mathf.Deg2Rad * Time.deltaTime;
+                machine.circleAngle += machine.circleLeftSpeed * machine.modifier.speed * Mathf.Deg2Rad * Time.deltaTime;
             else
-                machine.circleAngle -= machine.circleRightSpeed * Mathf.Deg2Rad * Time.deltaTime;
+                machine.circleAngle -= machine.circleRightSpeed * machine.modifier.speed * Mathf.Deg2Rad * Time.deltaTime;
         }
 
         // calculate movement target (including circling angle)
@@ -147,17 +150,26 @@ abstract class BaseStabState : StateBehavior<MeleeEnemy> {
     }
     
     public Vector3 CalculateMovement(float speed) {
-        return direction * speed * Time.deltaTime;
+        return direction * speed * machine.modifier.speed * Time.deltaTime;
     }
 }
 
 class StabInState : BaseStabState {
+    private float stabStart;
+
     public StabInState(MeleeEnemy m) : base(m) {}
-    public override void Mount() {}
+    public override void Mount() {
+        stabStart = Time.time;
+    }
     public override void Unmount() {}
     public override void Update() {
-        CalculateDistance();
+        // keep following some more for a specific amount of time
+        if((Time.time - stabStart) > machine.stabStalkingTime) {
+            machine.enableTracking = false;
+        }
 
+        // follow target
+        CalculateDistance();
         if(distance > machine.stabDistance)
             machine.transform.position = machine.transform.position - CalculateMovement(machine.stabInSpeed);
         else
