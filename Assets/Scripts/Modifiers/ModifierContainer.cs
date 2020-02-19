@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,6 @@ public enum WeaponType {
     sniper,
     shotgun,
     enemyPistol,
-    akimbo
 };
 
 public enum HatType {
@@ -29,6 +29,7 @@ public struct ValueModifier {
     public static readonly float MIN_VALUE = 0.001f;
 
     public ModifierType type;
+    public Sprite icon;
 
     public float speed;
     public float health;
