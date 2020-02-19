@@ -171,8 +171,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2298faaff857d5641a976f676afa45e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHurtBox: {fileID: 0}
-  isArenaPlaying: 0
+  status: 0
+  player: {fileID: 0}
+  startWaitTime: 3
+  endWaitTime: 3
 --- !u!1 &73345329
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,7 +520,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 12978046}
-        m_MethodName: StartGame
+        m_MethodName: ToArenaScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
