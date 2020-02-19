@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class Hurtbox : MonoBehaviour
 {
@@ -10,6 +9,7 @@ public class Hurtbox : MonoBehaviour
     public bool destroyOnDeath = false;
     /// Maximum health value. The health is initialized to this value
     public float maxHealth = 0;
+    public string hurtSoundName = "PlayerTakeDamage";
     [SerializeField]
     private float health;
 
@@ -28,6 +28,16 @@ public class Hurtbox : MonoBehaviour
         float newHealth = this.health - damage;
 
         if(newHealth > 0) {
+            // play sound effect
+            if(ValueModifier.TryGetModifier(this).randomSounds) {
+                SoundManager.i.SetPitch("Quack", Random.Range(0.75f, 0.9f));
+                SoundManager.i.PlayOnce("Quack");
+                SoundManager.i.SetPitch("Quack", 1);
+            } else {
+                SoundManager.i.PlayOnce(this.hurtSoundName);
+            }
+            
+            // set health values
             this.health = newHealth;
             return false;
         } else {

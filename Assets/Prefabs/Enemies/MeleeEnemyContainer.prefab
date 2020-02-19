@@ -238,7 +238,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowResuscitation: 0
+  destroyOnDeath: 0
   maxHealth: 3
+  hurtSoundName: BulletHitEnemy
   health: 0
 --- !u!58 &2008373945
 CircleCollider2D:
