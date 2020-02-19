@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
     [Header("Game state")]
     public float score;
     public float highScore;
@@ -20,6 +21,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
+
         if(isArenaPlaying) {
             playerHurtBox = GameObject.Find("Player").GetComponent<Hurtbox>();
         }
@@ -42,6 +45,7 @@ public class GameManager : MonoBehaviour
 
     public void QuitGame()
     {
+        instance = null;
         Debug.Log("Game is closed");
         Application.Quit();
     }
@@ -51,6 +55,7 @@ public class GameManager : MonoBehaviour
     {
         if (isArenaPlaying) {
             isArenaPlaying = false;
+            instance = null;
             Debug.Log("Goes to Game Over screen");
             SceneManager.LoadScene("GameOver");
         }
