@@ -12,7 +12,6 @@ public class EnemyManager : MonoBehaviour
     public int enemyIncrement;
     public int enemyCountStart;
     int waveEnemies;
-    int currentWave = 1;
     int currentEnemies;
 
     public float spawnDelay;
@@ -46,7 +45,7 @@ public class EnemyManager : MonoBehaviour
                 EnemyContainer.GetComponentInChildren<MeleeEnemy>().target = GameObject.Find("Player").GetComponent<Transform>();
                 EnemyContainer.GetComponentInChildren<Hurtbox>().destroyOnDeath = true;
               
-                Instantiate(EnemyContainer, spawnPoint_Enemy.position, spawnPoint_Enemy.rotation);    
+                Instantiate(EnemyContainer, spawnPoint_Enemy.position, spawnPoint_Enemy.rotation, this.gameObject.transform);    
 
                 currentEnemies++;
 
@@ -65,8 +64,8 @@ public class EnemyManager : MonoBehaviour
             currentEnemies = 0;
 
             waveText.enabled = true;
-            currentWave++;
-            waveText.text = "Wave " + currentWave;
+            GameManager.waveCounter++;
+            waveText.text = "Wave " + GameManager.waveCounter;
         }
 
         //IF ongoingWave and nextWave are false we are currently in SlotMachine state.

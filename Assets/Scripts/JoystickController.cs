@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class JoystickController : MonoBehaviour
 {
-    public bool isMovingDown = false;
-    public bool pressed = false;
+    private bool isMovingDown = false;
+    private bool pressed = false;
 
     public float DownSpeed = 10f;
     public float UpSpeed = 5f;
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && pressed == false)
-        {
-            pressed = true;
-            isMovingDown = true;
-        }
+    public void Press() {
+        pressed = true;
+        isMovingDown = true;
+    }
+
+    void Update() {
         if(pressed == true)
         {
             if(isMovingDown == true)

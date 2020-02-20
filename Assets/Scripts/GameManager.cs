@@ -15,8 +15,9 @@ public enum ArenaType {
     Forest,
 }
 
+[System.Serializable]
 public struct ArenaModifierEntry {
-    public ArenaModifier type;
+    public ValueModifier type;
     public GameObject obj;
 }
 
@@ -28,15 +29,16 @@ public class GameManager : MonoBehaviour
     public static int waveCounter;
     public static float score;
     public static float highScore;
-    public static ValueModifier enemyModifier;
-    public static ValueModifier playerModifier;
-    public static ArenaModifier arenaModifier;
+    public static ValueModifier enemyModifier = ValueModifier.Default();
+    public static ValueModifier playerModifier = ValueModifier.Default();
+    public static ValueModifier arenaModifier = ValueModifier.Default();
 
     [Header("Scene management")]
     public GameStatus status;
-    public GameObject player;
+    private GameObject player;
+    private GameObject enemyManager;
     public ArenaModifierEntry[] arenaModifiers;
-    private Dictionary<ArenaModifier, GameObject> _arenaModifiers;
+    private Dictionary<ValueModifier, GameObject> _arenaModifiers;
 
     [Header("Transition settings")]
     public float startWaitTime = 3f;
@@ -48,7 +50,10 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
 
+        // setup player
         player = GameObject.Find("Player");
+        player.GetComponent<ModifierContainer>().modifier = playerModifier;
+
         if(player != null) {
             status = GameStatus.start;
             counter = startWaitTime;
@@ -56,8 +61,12 @@ public class GameManager : MonoBehaviour
             status = GameStatus.menu;
         }
 
+        // setup enemies
+        enemyManager = GameObject.Find("EnemyManager");
+        enemyManager.GetComponent<ModifierContainer>().modifier = enemyModifier;
+
         // spawn arena modifiers
-        _arenaModifiers = new Dictionary<ArenaModifier, GameObject>();
+        _arenaModifiers = new Dictionary<ValueModifier, GameObject>();
         foreach(ArenaModifierEntry e in arenaModifiers) {
             _arenaModifiers.Add(e.type, e.obj);
         }
@@ -68,11 +77,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isArenaPlaying && player != null && player.GetComponent<Hurtbox>().isAlive == false ) {
-            Debug.Log("aww he ded");
-            GameOver();
-        }
-
         switch(status) {
             case GameStatus.start:
                 counter -= Time.deltaTime;
@@ -90,6 +94,10 @@ public class GameManager : MonoBehaviour
 
             default:
             case GameStatus.running:
+                if(player != null && player.GetComponent<Hurtbox>().isAlive == false ) {
+                    Debug.Log("aww he ded");
+                    GameOver();
+                }
                 break;
         }
     }
@@ -116,6 +124,11 @@ public class GameManager : MonoBehaviour
         ToArenaScene(ArenaType.Sand);
     }
 
+    public void ToSlotMachine()
+    {
+        SceneManager.LoadScene("menu_slotmachine");
+    }
+
     public void ToArenaScene(ArenaType arena)
     {
         SceneManager.LoadScene("arena_" + arena.ToString());
@@ -123,6 +136,7 @@ public class GameManager : MonoBehaviour
 
     public void ToGameOverScene() {
         instance = null;
+        ResetState();
         Debug.Log("Goes to Game Over screen");
         SceneManager.LoadScene("GameOver");
     }
@@ -133,4 +147,13 @@ public class GameManager : MonoBehaviour
     }
 
     public bool isArenaPlaying { get { return this.status == GameStatus.running; } }
+
+    public static void ResetState() {
+        enemyModifier = ValueModifier.Default();
+        playerModifier = ValueModifier.Default();
+        arenaModifier = ValueModifier.Default();
+
+        score = 0;
+        waveCounter = 0;
+    }
 }

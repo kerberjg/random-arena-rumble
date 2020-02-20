@@ -11,10 +11,10 @@ public enum SlotMachineState {
 
 public class SlotMachineController : MonoBehaviour {
     [Header("Visuals")]
-    public Transform lever;
+    public JoystickController lever;
     public Transform bigCylinder;
     public Transform smallCylinder;
-    public float spinningSpeed;
+    public float spinningSpeed = 500f;
     public SpriteRenderer playerSlot;
     public SpriteRenderer arenaSlot;
     public SpriteRenderer enemySlot;
@@ -28,7 +28,7 @@ public class SlotMachineController : MonoBehaviour {
 
     void Start()
     {
-        Transform parent = transform.Find("ModifiersContainer");
+        Transform parent = GameObject.Find("ModifiersContainer").transform;
 
         Transform slot1 = parent.Find("slot_1");
         for (int i = 0;i< slot1.childCount; i++)
@@ -56,20 +56,32 @@ public class SlotMachineController : MonoBehaviour {
             case SlotMachineState.idle:
                 if(Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Fire1")) {
                     state = SlotMachineState.spinning;
+                    animationCounter = animationLength;
+                    lever.Press();
                     // SoundManager.i.PlayOnce("Spinning");
+
+                    // hide slots
+                    playerSlot.gameObject.SetActive(false);
+                    arenaSlot.gameObject.SetActive(false);
+                    enemySlot.gameObject.SetActive(false);
                 }
                 return;
 
             // spinspinspinspiiin
             case SlotMachineState.spinning:
+                // rotate cylinders
+                bigCylinder.transform.Rotate(Vector3.up * spinningSpeed * Time.deltaTime);
+                smallCylinder.transform.Rotate(Vector3.up * spinningSpeed * Time.deltaTime);
+
                 float slotTime = animationLength / 3f;
-                if(animationLength <= slotTime * 0) {
+                if(animationCounter <= slotTime * 0 && !enemySlot.gameObject.activeSelf) {
                     PickEnemyModifier();
                     state = SlotMachineState.done;
+                    animationCounter = waitAfterRoll;
                     // SoundManager.i.StopPlaying("Spinning");
-                } else if(animationLength <= slotTime * 1) {
+                } else if(animationCounter <= slotTime * 1 && !arenaSlot.gameObject.activeSelf) {
                     PickArenaModifier();
-                } else if(animationLength <= slotTime * 2) {
+                } else if(animationCounter <= slotTime * 2 && !playerSlot.gameObject.activeSelf) {
                     PickPlayerModifier();
                 }
                 break;
@@ -83,6 +95,9 @@ public class SlotMachineController : MonoBehaviour {
 
             // set modifiers and start game
             case SlotMachineState.end:
+                GameManager.playerModifier.MergeModifier(this.playerModifier);
+                GameManager.arenaModifier.MergeModifier(this.arenaModifier);
+                GameManager.enemyModifier.MergeModifier(this.enemyModifier);
                 GameManager.instance.ToArenaScene();
                 break;
         }
@@ -95,7 +110,7 @@ public class SlotMachineController : MonoBehaviour {
 
     [Header("Final modifiers")]
     private ValueModifier playerModifier;
-    private ArenaModifier arenaModifier;
+    private ValueModifier arenaModifier;
     private ValueModifier enemyModifier;
 
     void PickPlayerModifier() {
@@ -111,7 +126,7 @@ public class SlotMachineController : MonoBehaviour {
     void PickArenaModifier() {
         // get modifier
         GameObject obj = arenaModifierOptions[Random.Range(0, arenaModifierOptions.Count)];
-        arenaModifier = obj.GetComponent<ModifierContainer>().arena;
+        arenaModifier = obj.GetComponent<ModifierContainer>().modifier;
 
         // set sprite
         arenaSlot.sprite = arenaModifier.icon;

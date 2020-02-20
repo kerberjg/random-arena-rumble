@@ -8,18 +8,6 @@ public enum ArenaModifierType {
     meteor_shower,
 }
 
-public struct ArenaModifier {
-    public Sprite icon;
-    public ArenaModifierType type;
-
-    public static ArenaModifier Default() {
-        return new ArenaModifier() {
-            icon = null,
-            type = ArenaModifierType.none,
-        };
-    }
-}
-
 public abstract class ArenaModifierBehavior : MonoBehaviour
 {
     public SunSource sun;
