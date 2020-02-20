@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: 0
-  player: {fileID: 0}
+  arenaModifiers: []
   startWaitTime: 3
   endWaitTime: 3
 --- !u!1 &73345329
@@ -539,7 +539,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 12978046}
-        m_MethodName: ToArenaScene
+        m_MethodName: ToSlotMachine
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
