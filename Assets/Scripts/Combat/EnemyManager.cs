@@ -67,6 +67,8 @@ public class EnemyManager : MonoBehaviour
             waveText.enabled = true;
             currentWave++;
             waveText.text = "Wave " + currentWave;
+            SoundManager.i.PlayOnce("Cheering");
+
         }
 
         //IF ongoingWave and nextWave are false we are currently in SlotMachine state.
@@ -76,7 +78,7 @@ public class EnemyManager : MonoBehaviour
             timer_BetweenWaves += Time.deltaTime;
 
             if(timer_BetweenWaves >= waveDelay) {
-
+             
                 nextWave = true;
                 
                 waveEnemies = waveEnemies + enemyIncrement;
