@@ -4692,7 +4692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Spinning
-    clip: {fileID: 8300000, guid: a0478545679d0084ca500205189f68f4, type: 3}
+    clip: {fileID: 8300000, guid: 283455c713a334b90837a468f175ca19, type: 3}
     volume: 1
     pitch: 1
     loop: 0
@@ -8263,7 +8263,7 @@ MonoBehaviour:
   lever: {fileID: 1304483842}
   bigCylinder: {fileID: 223694534}
   smallCylinder: {fileID: 186636817}
-  spinningSpeed: 10
+  spinningSpeed: 1000
   playerSlot: {fileID: 1555834765}
   arenaSlot: {fileID: 118394435}
   enemySlot: {fileID: 653932888}
