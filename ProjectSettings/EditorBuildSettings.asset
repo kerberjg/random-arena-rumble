@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/menu_slotmachine.unity
     guid: 765da9d4d9b4ec643af69bdc079bdcd7
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 7ac0fab10709d9a4ca6e2bbec3ab1f05
   m_configObjects: {}

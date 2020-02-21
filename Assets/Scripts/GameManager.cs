@@ -135,6 +135,11 @@ public class GameManager : MonoBehaviour
         ToArenaScene(ArenaType.Sand);
     }
 
+    public void toCreditsScene()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
     public void ToSlotMachine()
     {
         SceneManager.LoadScene("menu_slotmachine");
