@@ -52,10 +52,10 @@ public struct ValueModifier {
     }
 
     public void MergeModifier(ValueModifier other) {
-        if(other.speed > MIN_VALUE) this.speed += other.speed - 1f;
-        if(other.health > MIN_VALUE) this.health += other.health - 1f;
-        if(other.damage > MIN_VALUE) this.damage += other.damage - 1f;
-        if(other.scale > MIN_VALUE) this.scale += other.scale - 1f;
+        if(other.speed > MIN_VALUE) this.speed *= other.speed;
+        if(other.health > MIN_VALUE) this.health *= other.health;
+        if(other.damage > MIN_VALUE) this.damage *= other.damage;
+        if(other.scale > MIN_VALUE) this.scale *= other.scale;
 
         if(other.hats != null) {
             if(this.hats != null)
@@ -78,6 +78,9 @@ public struct ValueModifier {
     }
 
     public void SetDefaults() {
+        this.type = ModifierType.incremental;
+        this.icon = null;
+
         this.speed = 1f;
         this.health = 1f;
         this.damage = 1f;
@@ -96,7 +99,7 @@ public struct ValueModifier {
         try {
             ValueModifier modifier = obj.GetComponentInParent<ModifierContainer>().modifier;
             return modifier;
-        } catch (Exception e) {
+        } catch {
             return ValueModifier.Default();
         }
     }

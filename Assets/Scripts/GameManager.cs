@@ -26,12 +26,13 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [Header("Game state")]
+    private static bool isInit = false;
     public static int waveCounter;
     public static float score;
     public static float highScore;
-    public static ValueModifier enemyModifier = ValueModifier.Default();
-    public static ValueModifier playerModifier = ValueModifier.Default();
-    public static ValueModifier arenaModifier = ValueModifier.Default();
+    public static ValueModifier enemyModifier;
+    public static ValueModifier playerModifier;
+    public static ValueModifier arenaModifier;
 
     [Header("Scene management")]
     public GameStatus status;
@@ -48,30 +49,40 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // setup game manager
         instance = this;
 
-        // setup player
-        player = GameObject.Find("Player");
-        player.GetComponent<ModifierContainer>().modifier = playerModifier;
-
-        if(player != null) {
-            status = GameStatus.start;
-            counter = startWaitTime;
-        } else {
-            status = GameStatus.menu;
+        if(!isInit) {
+            ResetState();
+            isInit = true;
         }
 
-        // setup enemies
-        enemyManager = GameObject.Find("EnemyManager");
-        enemyManager.GetComponent<ModifierContainer>().modifier = enemyModifier;
+        // execute only in Arenas
+        if(status == GameStatus.start) {
+            // setup player
+            player = GameObject.Find("Player");
+            print(playerModifier.ToString());
+            player.GetComponent<ModifierContainer>().modifier.MergeModifier(playerModifier);
 
-        // spawn arena modifiers
-        _arenaModifiers = new Dictionary<ValueModifier, GameObject>();
-        foreach(ArenaModifierEntry e in arenaModifiers) {
-            _arenaModifiers.Add(e.type, e.obj);
+            if(player != null) {
+                status = GameStatus.start;
+                counter = startWaitTime;
+            } else {
+                status = GameStatus.menu;
+            }
+
+            // setup enemies
+            enemyManager = GameObject.Find("EnemyManager");
+            enemyManager.GetComponent<ModifierContainer>().modifier.MergeModifier(enemyModifier);
+
+            // spawn arena modifiers
+            _arenaModifiers = new Dictionary<ValueModifier, GameObject>();
+            foreach(ArenaModifierEntry e in arenaModifiers) {
+                _arenaModifiers.Add(e.type, e.obj);
+            }
+
+            Instantiate(_arenaModifiers[arenaModifier], Vector3.zero, Quaternion.identity, this.gameObject.transform);
         }
-
-        Instantiate(_arenaModifiers[arenaModifier], Vector3.zero, Quaternion.identity, this.gameObject.transform);
     }
 
     // Update is called once per frame
@@ -137,7 +148,6 @@ public class GameManager : MonoBehaviour
     public void ToGameOverScene() {
         instance = null;
         ResetState();
-        Debug.Log("Goes to Game Over screen");
         SceneManager.LoadScene("GameOver");
     }
 
@@ -154,6 +164,6 @@ public class GameManager : MonoBehaviour
         arenaModifier = ValueModifier.Default();
 
         score = 0;
-        waveCounter = 0;
+        waveCounter = 1;
     }
 }

@@ -95,9 +95,13 @@ public class SlotMachineController : MonoBehaviour {
 
             // set modifiers and start game
             case SlotMachineState.end:
+                print(GameManager.playerModifier.health);
+                print(this.playerModifier.health);
                 GameManager.playerModifier.MergeModifier(this.playerModifier);
                 GameManager.arenaModifier.MergeModifier(this.arenaModifier);
                 GameManager.enemyModifier.MergeModifier(this.enemyModifier);
+
+                print(GameManager.playerModifier.health);
                 GameManager.instance.ToArenaScene();
                 break;
         }
