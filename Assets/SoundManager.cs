@@ -57,7 +57,7 @@ public class SoundManager : MonoBehaviour
         LoopSound("BgMusic");
     }
 
-    public void PlayOnce(string name)
+    public void PlayOnce(string name, bool avoidDoubles = false)
     {
         Sound s = GetSound(name);
         if (s == null)
@@ -65,7 +65,12 @@ public class SoundManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
-        s.source.PlayOneShot(s.source.clip, s.volume);
+
+        // avoid playing twice if requested
+        if(!(avoidDoubles && s.source.isPlaying)) {
+            s.source.PlayOneShot(s.source.clip, s.volume);
+        }
+        
     }
 
     public void LoopSound(string name)

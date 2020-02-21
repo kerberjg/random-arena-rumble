@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1532,7 +1532,6 @@ MonoBehaviour:
   enemyCountStart: 1
   spawnDelay: 2
   goToSlotAfterWave: 1
-  waveDelay: 1.5
   nextWave: 0
 --- !u!4 &529370647
 Transform:
@@ -5680,16 +5679,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6519851107162222770, guid: bb672ea80511b455190f6d1e1820a65c,
-        type: 3}
-      propertyPath: status
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6519851107162222770, guid: bb672ea80511b455190f6d1e1820a65c,
-        type: 3}
-      propertyPath: endWaitTime
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 399023668664151645, guid: bb672ea80511b455190f6d1e1820a65c,
         type: 3}
       propertyPath: sounds.Array.size
@@ -5838,7 +5827,7 @@ PrefabInstance:
     - target: {fileID: 399023668664151645, guid: bb672ea80511b455190f6d1e1820a65c,
         type: 3}
       propertyPath: sounds.Array.data[1].volume
-      value: 1
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 399023668664151645, guid: bb672ea80511b455190f6d1e1820a65c,
         type: 3}
@@ -5879,6 +5868,16 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.Array.data[1].pitch
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6519851107162222770, guid: bb672ea80511b455190f6d1e1820a65c,
+        type: 3}
+      propertyPath: status
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6519851107162222770, guid: bb672ea80511b455190f6d1e1820a65c,
+        type: 3}
+      propertyPath: endWaitTime
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8291654042520702101, guid: bb672ea80511b455190f6d1e1820a65c,
         type: 3}
