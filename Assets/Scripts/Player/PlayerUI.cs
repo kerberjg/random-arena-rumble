@@ -5,14 +5,24 @@ using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
-    public int health;
-    public int numOfHearts;
+    public float health;
+    public float numOfHearts;
 
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
 
+    Hurtbox playerHurtBox;
+
+    private void Start()
+    {
+        playerHurtBox = GameObject.Find("Player").GetComponent<Hurtbox>();
+    }
+
     void Update(){
+
+        health = playerHurtBox.health;
+        numOfHearts = playerHurtBox.maxHealth;
 
         if(health > numOfHearts) {
             health = numOfHearts;

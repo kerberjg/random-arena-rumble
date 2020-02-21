@@ -158,10 +158,11 @@ abstract class BaseStabState : StateBehavior<MeleeEnemy> {
 
 class StabInState : BaseStabState {
     private float stabStart;
-
+    
     public StabInState(MeleeEnemy m) : base(m) {}
     public override void Mount() {
         stabStart = Time.time;
+        SoundManager.i.PlayOnce("StabSwoosh");
     }
     public override void Unmount() {}
     public override void Update() {

@@ -10,8 +10,8 @@ public class Hurtbox : MonoBehaviour
     /// Maximum health value. The health is initialized to this value
     public float maxHealth = 0;
     public string hurtSoundName = "PlayerTakeDamage";
-    [SerializeField]
-    private float health;
+    
+    public float health;
 
     void Start()
     {
