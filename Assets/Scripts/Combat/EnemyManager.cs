@@ -38,6 +38,7 @@ public class EnemyManager : MonoBehaviour
         if(!ongoingWave && !nextWave) {
             //Do the thing u want before next wave.
             waveText.text = "Wave " + GameManager.waveCounter;
+            SoundManager.i.PlayOnce("Cheering");
             timer_BetweenWaves += Time.deltaTime;
 
             if(timer_BetweenWaves >= GameManager.instance.startWaitTime) {

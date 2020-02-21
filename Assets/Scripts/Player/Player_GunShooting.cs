@@ -53,6 +53,7 @@ public class Player_GunShooting : MonoBehaviour
     private void Shoot()
     {
         isShooting = true;
+        SoundManager.i.PlayOnce("GunShot");
 
         GameObject b = Instantiate(bullet, gunBarrel.transform.position, gunBarrel.transform.rotation);
         b.GetComponent<Bullet>().targetTag.Add("Enemy");

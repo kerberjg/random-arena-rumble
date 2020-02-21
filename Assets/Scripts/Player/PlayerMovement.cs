@@ -21,6 +21,12 @@ public class PlayerMovement : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal"); //Get Horizontal Input
         movement.y = Input.GetAxisRaw("Vertical"); //Get Vertical Input
 
+        if(movement.sqrMagnitude > 0) {
+            SoundManager.i.LoopSound("Walking");
+        } else {
+            SoundManager.i.StopPlaying("Walking");
+        }
+
         PlayerAiming();
     }
 

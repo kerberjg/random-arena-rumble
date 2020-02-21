@@ -30,6 +30,7 @@ public class Bullet : Hitbox {
         }
         else {
             base.OnCollisionEnter2D(collision);
+            SoundManager.i.PlayOnce("BulletCollision");
         }
     }
 }

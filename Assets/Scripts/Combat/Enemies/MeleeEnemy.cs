@@ -23,6 +23,8 @@ public class MeleeEnemy : StalkerEnemyBehavior
     public float circleAngle = 0f;
     public GameObject stalkerDebugger;
 
+    SoundManager soundManager;
+
     public FinalStateMachineProvider<MeleeEnemy> states;
 
     public MeleeEnemy() {
@@ -37,7 +39,7 @@ public class MeleeEnemy : StalkerEnemyBehavior
     // Start is called before the first frame update
     void Start()
     {
-        
+        soundManager = GameObject.Find("ArenaGameManager").GetComponent<SoundManager>();
     }
 
     // Update is called once per frame
