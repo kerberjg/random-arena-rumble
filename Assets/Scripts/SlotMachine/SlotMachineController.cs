@@ -58,7 +58,7 @@ public class SlotMachineController : MonoBehaviour {
                     state = SlotMachineState.spinning;
                     animationCounter = animationLength;
                     lever.Press();
-                    // SoundManager.i.PlayOnce("Spinning");
+                    SoundManager.i.PlayOnce("Spinning");
 
                     // hide slots
                     playerSlot.gameObject.SetActive(false);
@@ -78,7 +78,7 @@ public class SlotMachineController : MonoBehaviour {
                     PickEnemyModifier();
                     state = SlotMachineState.done;
                     animationCounter = waitAfterRoll;
-                    // SoundManager.i.StopPlaying("Spinning");
+                    SoundManager.i.StopPlaying("Spinning");
                 } else if(animationCounter <= slotTime * 1 && !arenaSlot.gameObject.activeSelf) {
                     PickArenaModifier();
                 } else if(animationCounter <= slotTime * 2 && !playerSlot.gameObject.activeSelf) {
