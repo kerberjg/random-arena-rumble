@@ -8,7 +8,15 @@ public class Hitbox : MonoBehaviour
     public bool destroyOnImpact;
     public List<string> targetTag;
 
-    protected virtual void OnCollisionEnter2D(Collision2D collision) {
+    private void OnCollisionEnter2D(Collision2D other) {
+        OnImpact(other.collider);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        OnImpact(other);
+    }
+
+    protected virtual void OnImpact(Collider2D collision) {
         foreach (string tag in targetTag) {
             if(collision.gameObject.tag == tag) {
                 ApplyDamage(collision.gameObject);

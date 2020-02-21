@@ -22,14 +22,14 @@ public class Bullet : Hitbox {
 
     }
 
-    protected override void OnCollisionEnter2D(Collision2D collision)
+    protected override void OnImpact(Collider2D collision)
     {
         if (piercing && collision.gameObject.tag == "Wall") {
             Destroy(gameObject);
            // print("Bullet Piercing");
         }
         else {
-            base.OnCollisionEnter2D(collision);
+            base.OnImpact(collision);
             SoundManager.i.PlayOnce("BulletCollision");
         }
     }
