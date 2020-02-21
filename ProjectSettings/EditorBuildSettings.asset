@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/arena_Sand.unity
     guid: 8825469fe04a449b4aebeefceceb9875
+  - enabled: 1
+    path: Assets/Scenes/menu_slotmachine.unity
+    guid: 765da9d4d9b4ec643af69bdc079bdcd7
   m_configObjects: {}

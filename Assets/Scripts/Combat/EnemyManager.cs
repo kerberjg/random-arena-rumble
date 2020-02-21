@@ -12,13 +12,12 @@ public class EnemyManager : MonoBehaviour
     public int enemyIncrement;
     public int enemyCountStart;
     int waveEnemies;
-    int currentWave = 1;
     int currentEnemies;
 
     public float spawnDelay;
     float timer_enemySpawner;
 
-    public float waveDelay;
+    public bool goToSlotAfterWave = true;
     float timer_BetweenWaves;
 
     public bool nextWave = false;
@@ -26,18 +25,32 @@ public class EnemyManager : MonoBehaviour
 
     private void Start()
     {
-        waveEnemies = enemyCountStart;
+        waveEnemies = GameManager.waveCounter < 2 ? enemyCountStart : GameManager.waveCounter * enemyIncrement;
 
         waveText = GameObject.Find("WaveText").GetComponent<Text>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-
         timer_enemySpawner += Time.deltaTime;
 
-        if (nextWave) {
+        // level just started, delay start and show text
+        if(!ongoingWave && !nextWave) {
+            //Do the thing u want before next wave.
+            waveText.text = "Wave " + GameManager.waveCounter;
+            SoundManager.i.PlayOnce("Cheering");
+            timer_BetweenWaves += Time.deltaTime;
+
+            if(timer_BetweenWaves >= GameManager.instance.startWaitTime) {
+
+                nextWave = true;
+                waveEnemies = waveEnemies + enemyIncrement;
+                timer_BetweenWaves = 0f;
+            }
+            
+        }
+        // wave started, spawn enemies, hide text
+        else if (nextWave) {
 
             waveText.enabled = false;
 
@@ -46,7 +59,7 @@ public class EnemyManager : MonoBehaviour
                 EnemyContainer.GetComponentInChildren<MeleeEnemy>().target = GameObject.Find("Player").GetComponent<Transform>();
                 EnemyContainer.GetComponentInChildren<Hurtbox>().destroyOnDeath = true;
               
-                Instantiate(EnemyContainer, spawnPoint_Enemy.position, spawnPoint_Enemy.rotation);    
+                Instantiate(EnemyContainer, spawnPoint_Enemy.position, spawnPoint_Enemy.rotation, this.gameObject.transform);    
 
                 currentEnemies++;
 
@@ -55,38 +68,16 @@ public class EnemyManager : MonoBehaviour
                 ongoingWave = true;
                 nextWave = false;
             }
-
-            
         }
-
-        if (ongoingWave && GameObject.FindGameObjectsWithTag("Enemy").Length == 0) {
+        // wave ended, enemies killed, go back to slot machine
+        else if (ongoingWave && GameObject.FindGameObjectsWithTag("Enemy").Length == 0) {
             print("Wave Finished");
+
             ongoingWave = false;
             currentEnemies = 0;
 
-            waveText.enabled = true;
-            currentWave++;
-            waveText.text = "Wave " + currentWave;
-            SoundManager.i.PlayOnce("Cheering");
-
-        }
-
-        //IF ongoingWave and nextWave are false we are currently in SlotMachine state.
-
-        if(!ongoingWave && !nextWave) {
-            //Do the thing u want before next wave.
-            timer_BetweenWaves += Time.deltaTime;
-
-            if(timer_BetweenWaves >= waveDelay) {
-             
-                nextWave = true;
-                
-                waveEnemies = waveEnemies + enemyIncrement;
-
-                timer_BetweenWaves = 0f;
-                
-            }
-            
+            GameManager.waveCounter++;
+            GameManager.instance.ToSlotMachine();
         }
     }
 }

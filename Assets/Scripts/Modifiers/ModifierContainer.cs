@@ -42,6 +42,9 @@ public struct ValueModifier {
     public WeaponType leftWeapon;
     public WeaponType rightWeapon;
 
+
+    public ArenaModifierType arena;
+
     public static ValueModifier Default() {
         ValueModifier x = new ValueModifier();
         x.SetDefaults();
@@ -49,19 +52,35 @@ public struct ValueModifier {
     }
 
     public void MergeModifier(ValueModifier other) {
-        if(other.speed > MIN_VALUE) this.speed += 1f - other.speed;
-        if(other.speed > MIN_VALUE) this.health += 1f - other.health;
-        if(other.speed > MIN_VALUE) this.damage += 1f - other.damage;
-        if(other.speed > MIN_VALUE) this.scale += 1f - other.scale;
+        if(other.speed > MIN_VALUE) this.speed *= other.speed;
+        if(other.health > MIN_VALUE) this.health *= other.health;
+        if(other.damage > MIN_VALUE) this.damage *= other.damage;
+        if(other.scale > MIN_VALUE) this.scale *= other.scale;
 
-        if(other.hats != null) this.hats.AddRange(other.hats);
+        if(other.hats != null) {
+            if(this.hats != null)
+                this.hats.AddRange(other.hats);
+            else
+                this.hats = other.hats;
+        }
+
         this.randomSounds = other.randomSounds;
 
-        this.leftWeapon = other.leftWeapon;
-        this.rightWeapon = other.rightWeapon;
+        if(type == ModifierType.incremental) {
+            if(other.leftWeapon != WeaponType.none) this.leftWeapon = other.leftWeapon;
+            if(other.rightWeapon != WeaponType.none) this.rightWeapon = other.rightWeapon;
+        } else if(type == ModifierType.temporary) {
+            this.leftWeapon = other.leftWeapon;
+            this.rightWeapon = other.rightWeapon;
+        }
+
+        this.arena = other.arena;
     }
 
     public void SetDefaults() {
+        this.type = ModifierType.incremental;
+        this.icon = null;
+
         this.speed = 1f;
         this.health = 1f;
         this.damage = 1f;
@@ -72,13 +91,15 @@ public struct ValueModifier {
 
         this.leftWeapon = WeaponType.none;
         this.rightWeapon = WeaponType.none;
+
+        this.arena = ArenaModifierType.none;
     }
 
     public static ValueModifier TryGetModifier(Component obj) {
         try {
             ValueModifier modifier = obj.GetComponentInParent<ModifierContainer>().modifier;
             return modifier;
-        } catch (Exception e) {
+        } catch {
             return ValueModifier.Default();
         }
     }

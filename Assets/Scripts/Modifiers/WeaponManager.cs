@@ -78,7 +78,6 @@ public class WeaponManager : ThrottledMonoBehaviour
                 continue;
             }
             
-            print(obj.gameObject.name);
             if(obj.gameObject.name == name)
                 return obj.gameObject;
         }
