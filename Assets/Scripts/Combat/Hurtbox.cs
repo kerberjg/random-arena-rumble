@@ -7,11 +7,18 @@ public class Hurtbox : MonoBehaviour
     /// Whether an entity can be healed back to life after death
     public bool allowResuscitation = false;
     public bool destroyOnDeath = false;
+    public string hurtSoundName = "PlayerTakeDamage";
+
+    [Header("Health")]
     /// Maximum health value. The health is initialized to this value
     public float maxHealth = 0;
-    public string hurtSoundName = "PlayerTakeDamage";
-    
-    public float health;
+        public float health;
+
+    [Header("Invulnerability")]
+    public float invulnerabilityTime = 1f;
+    public float invulnerabilityBlink = 0.0666f;
+    private float invTimer = 0f;
+
 
     void Start()
     {
@@ -22,23 +29,49 @@ public class Hurtbox : MonoBehaviour
         health = maxHealth;
     }
 
+    void LateUpdate() {
+        // update invulnerability state
+        if(invTimer > 0) {
+            invTimer = Mathf.Clamp(invTimer - Time.deltaTime, 0, invulnerabilityTime);
+
+            // update invulnerability blink
+            bool blink = Mathf.RoundToInt( invTimer / invulnerabilityBlink ) % 2 == 0;
+            SetVisibility(blink);    
+        }
+    }
+
+    protected virtual void SetVisibility(bool blink) {
+        Renderer[] sprites = GetComponentsInChildren<Renderer>();
+        foreach (Renderer a in sprites) {
+            if(a.gameObject.activeSelf)
+                a.enabled = blink;
+        }
+    }
+
     /// Decrements the health by the specified amount
     /// Returns true if the entity dies on hit
     public bool Hit(float damage) {
+        // no damage taken if currently invulnerable
+        if(invTimer > 0) {
+            return false;
+        }
+
         float newHealth = this.health - damage;
 
         if(newHealth > 0) {
             // play sound effect
             if(ValueModifier.TryGetModifier(this).randomSounds) {
-                SoundManager.i.SetPitch("Quack", Random.Range(0.75f, 0.9f));
                 SoundManager.i.PlayOnce("Quack");
-                SoundManager.i.SetPitch("Quack", 1);
             } else {
                 SoundManager.i.PlayOnce(this.hurtSoundName);
             }
             
             // set health values
             this.health = newHealth;
+
+            // start invulnerability
+            invTimer = invulnerabilityTime;
+
             return false;
         } else {
             health = 0;
