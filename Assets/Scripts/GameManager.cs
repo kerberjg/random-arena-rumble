@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
     private float counter;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         // setup game manager
         instance = this;
