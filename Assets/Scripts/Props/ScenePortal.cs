@@ -8,7 +8,7 @@ public class ScenePortal : MonoBehaviour
 {
     public SceneAsset scene;
 
-    void OnTriggerCollision2D(Collider2D collider) {
+    void OnTriggerEnter2D(Collider2D collider) {
         if(collider.gameObject.tag == "Player") {
             SceneManager.LoadScene(scene.name);
         }
