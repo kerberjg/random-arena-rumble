@@ -44,8 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2298faaff857d5641a976f676afa45e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHurtBox: {fileID: 0}
-  isArenaPlaying: 1
+  status: 1
+  arenaModifiers: []
+  loseScene: {fileID: 102900000, guid: 5ac3fba4093d8ff42b74338a1f004bde, type: 3}
+  winScene: {fileID: 102900000, guid: 765da9d4d9b4ec643af69bdc079bdcd7, type: 3}
+  startWaitTime: 3
+  endWaitTime: 0
 --- !u!114 &399023668664151645
 MonoBehaviour:
   m_ObjectHideFlags: 0

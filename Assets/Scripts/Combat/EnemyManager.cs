@@ -10,15 +10,15 @@ public class EnemyManager : MonoBehaviour
     private int spawnPoint_counter;
     Text waveText;
 
-    public int enemyIncrement;
-    public int enemyCountStart;
+    public int enemyIncrement = 1;
+    public int enemyCountStart = 2;
+    public bool isInfinite = false;
     int waveEnemies;
     int currentEnemies;
 
     public float spawnDelay;
     float timer_enemySpawner;
 
-    public bool goToSlotAfterWave = true;
     float timer_BetweenWaves;
 
     public bool nextWave = false;
@@ -42,11 +42,10 @@ public class EnemyManager : MonoBehaviour
             SoundManager.i.PlayOnce("Cheering", true);
             timer_BetweenWaves += Time.deltaTime;
 
+            // await wave start
             if(timer_BetweenWaves >= GameManager.instance.startWaitTime) {
-
                 nextWave = true;
                 spawnPoint_counter = 0;
-                waveEnemies = waveEnemies + enemyIncrement;
                 timer_BetweenWaves = 0f;
             }
             
@@ -56,7 +55,7 @@ public class EnemyManager : MonoBehaviour
 
             waveText.enabled = false;
 
-            if (currentEnemies < waveEnemies && timer_enemySpawner >= spawnDelay) {
+            if ((isInfinite || currentEnemies < waveEnemies) && timer_enemySpawner >= spawnDelay) {
 
                 EnemyContainer.GetComponentInChildren<MeleeEnemy>().target = GameObject.Find("Player").GetComponent<Transform>();
                 EnemyContainer.GetComponentInChildren<Hurtbox>().destroyOnDeath = true;
@@ -70,7 +69,7 @@ public class EnemyManager : MonoBehaviour
                 nextWave = false;
             }
         }
-        // wave ended, enemies killed, go back to slot machine
+        // wave ended, enemies killed, call GameManager and disable spawner
         else if (ongoingWave && GameObject.FindGameObjectsWithTag("Enemy").Length == 0) {
             print("Wave Finished");
 
@@ -78,7 +77,7 @@ public class EnemyManager : MonoBehaviour
             currentEnemies = 0;
 
             GameManager.waveCounter++;
-            GameManager.instance.ToSlotMachine();
+            GameManager.instance.Win();
         }
     }
 }

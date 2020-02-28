@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public enum GameStatus {
     menu, start, running, end
@@ -42,6 +43,9 @@ public class GameManager : MonoBehaviour
     private Dictionary<ValueModifier, GameObject> _arenaModifiers;
 
     [Header("Transition settings")]
+    public SceneAsset loseScene;
+    public SceneAsset winScene;
+    private string nextScene;
     public float startWaitTime = 3f;
     public float endWaitTime = 3f;
     private float counter;
@@ -99,7 +103,7 @@ public class GameManager : MonoBehaviour
             case GameStatus.end:
                 counter -= Time.deltaTime;
                 if(counter <= 0f) {
-                    ToGameOverScene();
+                    SceneManager.LoadScene(nextScene);
                 }
                 break;
 
@@ -120,12 +124,21 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
-
-    public void GameOver()
-    {
+    public void Win() {
         if (isArenaPlaying) {
             status = GameStatus.end;
             counter = endWaitTime;
+            nextScene = winScene.name;
+        }
+    }
+
+    public void GameOver()
+    {
+        //player.GetComponentInChildren<PlayerMovement>()
+        if (isArenaPlaying) {
+            status = GameStatus.end;
+            counter = endWaitTime;
+            nextScene = loseScene.name;
         }
     }
 
@@ -148,12 +161,6 @@ public class GameManager : MonoBehaviour
     public void ToArenaScene(ArenaType arena)
     {
         SceneManager.LoadScene("arena_" + arena.ToString());
-    }
-
-    public void ToGameOverScene() {
-        instance = null;
-        ResetState();
-        SceneManager.LoadScene("GameOver");
     }
 
     public void ToMainMenuScene()
