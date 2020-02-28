@@ -14,9 +14,7 @@ public class TriggerController : MonoBehaviour
 
     public int currentCount { get; private set; }
     private int targetCount;
-    private bool isComplete {
-        get { return currentCount >= targetCount; }
-    }
+    private bool isComplete = false;
 
     void Start()
     {
@@ -54,6 +52,10 @@ public class TriggerController : MonoBehaviour
     }
 
     public bool Trigger(Trigger t) {
+        // don't update if trigger is complete
+        if(isComplete)
+            return false;
+
         switch(type) {
             case TriggerGroupType.singular:
                 ++currentCount;
@@ -78,6 +80,8 @@ public class TriggerController : MonoBehaviour
     }
 
     void OnComplete() {
+        Debug.Log("Trigger complete!");
+        isComplete = true;
         foreach(GameObject obj in targets) {
             Destroy(obj);
         }

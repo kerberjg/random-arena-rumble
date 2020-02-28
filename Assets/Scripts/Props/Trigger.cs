@@ -15,9 +15,11 @@ public class Trigger : MonoBehaviour
         controller.Register(this);
     }
 
-    void OnTriggerCollision2D(Collider2D collider) {
+    void OnTriggerEnter2D(Collider2D collider) {
         if(!active && collider.gameObject.tag == "Player") {
-            Activate();
+            Debug.Log("Button Pressed! " + value);
+            if(controller.Trigger(this))
+                Activate();
         }
     }
 
@@ -39,6 +41,7 @@ public class Trigger : MonoBehaviour
     }
 
     public void Deactivate() {
+        Debug.Log("Button Pressed! " + value);
         active = false;
 
         Renderer r;
