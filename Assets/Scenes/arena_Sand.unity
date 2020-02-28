@@ -1527,7 +1527,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyContainer: {fileID: 5436815712212114907, guid: 4711deada97a34eb98b7b66595987741,
     type: 3}
-  spawnPoint_Enemy: {fileID: 932042547}
+  spawnPoint_Enemy:
+  - {fileID: 932042547}
   enemyIncrement: 1
   enemyCountStart: 1
   spawnDelay: 2

@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class EnemyManager : MonoBehaviour
 {
     public GameObject EnemyContainer;
-    public Transform spawnPoint_Enemy;
+    public Transform[] spawnPoint_Enemy;
+    private int spawnPoint_counter;
     Text waveText;
 
     public int enemyIncrement;
@@ -44,6 +45,7 @@ public class EnemyManager : MonoBehaviour
             if(timer_BetweenWaves >= GameManager.instance.startWaitTime) {
 
                 nextWave = true;
+                spawnPoint_counter = 0;
                 waveEnemies = waveEnemies + enemyIncrement;
                 timer_BetweenWaves = 0f;
             }
@@ -59,9 +61,8 @@ public class EnemyManager : MonoBehaviour
                 EnemyContainer.GetComponentInChildren<MeleeEnemy>().target = GameObject.Find("Player").GetComponent<Transform>();
                 EnemyContainer.GetComponentInChildren<Hurtbox>().destroyOnDeath = true;
               
-                Instantiate(EnemyContainer, spawnPoint_Enemy.position, spawnPoint_Enemy.rotation, this.gameObject.transform);    
-
-                currentEnemies++;
+                Transform spawnPoint = spawnPoint_Enemy[currentEnemies++ % spawnPoint_Enemy.Length];
+                Instantiate(EnemyContainer, spawnPoint.position, spawnPoint.rotation, this.gameObject.transform);    
 
                 timer_enemySpawner = 0f;
             } else if(currentEnemies == waveEnemies) {
