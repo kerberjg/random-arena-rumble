@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/GameOver.unity
     guid: 5ac3fba4093d8ff42b74338a1f004bde
   - enabled: 1
-    path: Assets/Scenes/arena_Sand.unity
+    path: Assets/Scenes/Zone 1.unity
     guid: 8825469fe04a449b4aebeefceceb9875
   - enabled: 1
     path: Assets/Scenes/menu_slotmachine.unity
