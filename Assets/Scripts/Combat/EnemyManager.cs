@@ -55,6 +55,7 @@ public class EnemyManager : MonoBehaviour
 
             waveText.enabled = false;
 
+            // keep spawning enemies if necessary
             if ((isInfinite || currentEnemies < waveEnemies) && timer_enemySpawner >= spawnDelay) {
 
                 EnemyContainer.GetComponentInChildren<MeleeEnemy>().target = GameObject.Find("Player").GetComponent<Transform>();
@@ -64,7 +65,7 @@ public class EnemyManager : MonoBehaviour
                 Instantiate(EnemyContainer, spawnPoint.position, spawnPoint.rotation, this.gameObject.transform);    
 
                 timer_enemySpawner = 0f;
-            } else if(currentEnemies == waveEnemies) {
+            } else if(!isInfinite && currentEnemies == waveEnemies) {
                 ongoingWave = true;
                 nextWave = false;
             }
