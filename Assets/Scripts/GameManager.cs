@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     [Header("Scene management")]
     public GameStatus status;
     private GameObject player;
-    private GameObject enemyManager;
+    public GameObject enemyManager;
     public ArenaModifierEntry[] arenaModifiers;
     private Dictionary<ValueModifier, GameObject> _arenaModifiers;
 
@@ -76,16 +76,18 @@ public class GameManager : MonoBehaviour
             }
 
             // setup enemies
-            enemyManager = GameObject.Find("EnemyManager");
-            enemyManager.GetComponent<ModifierContainer>().modifier.MergeModifier(enemyModifier);
 
-            // spawn arena modifiers
+            if (enemyManager.activeInHierarchy) {
+            enemyManager.GetComponent<ModifierContainer>().modifier.MergeModifier(enemyModifier);
+            }
+
+            /*// spawn arena modifiers
             _arenaModifiers = new Dictionary<ValueModifier, GameObject>();
             foreach(ArenaModifierEntry e in arenaModifiers) {
                 _arenaModifiers.Add(e.type, e.obj);
             }
 
-            Instantiate(_arenaModifiers[arenaModifier], Vector3.zero, Quaternion.identity, this.gameObject.transform);
+            Instantiate(_arenaModifiers[arenaModifier], Vector3.zero, Quaternion.identity, this.gameObject.transform); */
         }
     }
 
