@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +13,7 @@ public class TriggerController : MonoBehaviour
     public GameObject[] targets;
 
     public int currentCount { get; private set; }
-    private int targetCount;
+    private int targetCount = 0;
     private bool isComplete = false;
 
     void Start()
@@ -48,7 +48,19 @@ public class TriggerController : MonoBehaviour
     }
 
     public void Register(Trigger t) {
-        targetCount += t.value;
+        switch(type) {
+            case TriggerGroupType.singular:
+                targetCount += t.value;
+                break;
+
+            case TriggerGroupType.incremental:
+                targetCount += t.value;
+                break;
+
+            case TriggerGroupType.sequential:
+                targetCount = Mathf.Max(targetCount, t.value);
+                break;
+        }
     }
 
     public bool Trigger(Trigger t) {

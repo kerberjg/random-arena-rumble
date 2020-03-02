@@ -24,6 +24,8 @@ public class EnemyManager : MonoBehaviour
     public bool nextWave = false;
     bool ongoingWave = false;
 
+    public bool killToWin;
+
     private void Start()
     {
         waveEnemies = GameManager.waveCounter < 2 ? enemyCountStart : GameManager.waveCounter * enemyIncrement;
@@ -78,7 +80,9 @@ public class EnemyManager : MonoBehaviour
             currentEnemies = 0;
 
             GameManager.waveCounter++;
+            if (killToWin) {
             GameManager.instance.Win();
+            }
         }
     }
 }
