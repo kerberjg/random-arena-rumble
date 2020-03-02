@@ -3364,6 +3364,7 @@ MonoBehaviour:
   isInfinite: 0
   spawnDelay: 2
   nextWave: 0
+  killToWin: 0
 --- !u!4 &970847953
 Transform:
   m_ObjectHideFlags: 0
@@ -5614,7 +5615,8 @@ PrefabInstance:
         type: 3}
       propertyPath: winScene
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 102900000, guid: e44234e3c2a33c141a0f926bbbc7c7c9,
+        type: 3}
     - target: {fileID: 8291654042520702101, guid: bb672ea80511b455190f6d1e1820a65c,
         type: 3}
       propertyPath: m_LocalPosition.x

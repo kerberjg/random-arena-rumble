@@ -162,7 +162,7 @@ public class GameManager : MonoBehaviour
 
     public void ToArenaScene(ArenaType arena)
     {
-        SceneManager.LoadScene("arena_" + arena.ToString());
+        SceneManager.LoadScene("arena_Level1Zone1");
     }
 
     public void ToMainMenuScene()

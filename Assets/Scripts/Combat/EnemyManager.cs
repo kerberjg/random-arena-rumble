@@ -26,11 +26,12 @@ public class EnemyManager : MonoBehaviour
 
     public bool killToWin;
 
-    private void Start()
+    void Start()
     {
         waveEnemies = GameManager.waveCounter < 2 ? enemyCountStart : GameManager.waveCounter * enemyIncrement;
 
         waveText = GameObject.Find("WaveText").GetComponent<Text>();
+        waveText.enabled = false;
     }
 
     void Update()
@@ -41,6 +42,7 @@ public class EnemyManager : MonoBehaviour
         if(!ongoingWave && !nextWave) {
             //Do the thing u want before next wave.
             waveText.text = "Wave " + GameManager.waveCounter;
+            waveText.enabled = false;
             SoundManager.i.PlayOnce("Cheering", true);
             timer_BetweenWaves += Time.deltaTime;
 
