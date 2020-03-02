@@ -87,7 +87,7 @@ MonoBehaviour:
   allowResuscitation: 0
   destroyOnDeath: 0
   hurtSoundName: BulletHitEnemy
-  maxHealth: 3
+  maxHealth: 5
   health: 0
   invulnerabilityTime: 0
   invulnerabilityBlink: 0.0666
