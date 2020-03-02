@@ -18,8 +18,17 @@ EditorBuildSettings:
     path: Assets/Scenes/GameOver.unity
     guid: 5ac3fba4093d8ff42b74338a1f004bde
   - enabled: 1
-    path: Assets/Scenes/arena_Sand.unity
+    path: Assets/Scenes/arena_Level1Zone1.unity
     guid: 8825469fe04a449b4aebeefceceb9875
+  - enabled: 1
+    path: Assets/Scenes/arena_Level1Zone2.unity
+    guid: 07e6080c97c67894cabc58c899351fec
+  - enabled: 1
+    path: Assets/Scenes/arena_Level1Zone3.unity
+    guid: 05fe8fe0f13bf744ca468722f933b06d
+  - enabled: 1
+    path: Assets/Scenes/arena_Level1Zone4.unity
+    guid: f0397df226370384dacea8e7ed09d64f
   - enabled: 1
     path: Assets/Scenes/menu_slotmachine.unity
     guid: 765da9d4d9b4ec643af69bdc079bdcd7
