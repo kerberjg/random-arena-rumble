@@ -11,12 +11,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 5fdf5bb177aa53046879f3db74307291
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 7ac0fab10709d9a4ca6e2bbec3ab1f05
   - enabled: 0
     path: Assets/Scenes/Player.unity
     guid: 3bf09bdbfea640e4a8abb3beefa97002
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 5ac3fba4093d8ff42b74338a1f004bde
+  - enabled: 1
+    path: Assets/Scenes/menu_slotmachine.unity
+    guid: 765da9d4d9b4ec643af69bdc079bdcd7
   - enabled: 1
     path: Assets/Scenes/arena_Level1Zone1.unity
     guid: 8825469fe04a449b4aebeefceceb9875
@@ -30,15 +36,15 @@ EditorBuildSettings:
     path: Assets/Scenes/arena_Level1Zone4.unity
     guid: f0397df226370384dacea8e7ed09d64f
   - enabled: 1
-    path: Assets/Scenes/menu_slotmachine.unity
-    guid: 765da9d4d9b4ec643af69bdc079bdcd7
-  - enabled: 1
-    path: Assets/Scenes/Credits.unity
-    guid: 7ac0fab10709d9a4ca6e2bbec3ab1f05
-  - enabled: 1
-    path: Assets/Scenes/level_02_zone1.unity
+    path: Assets/Scenes/arena_Level2Zone1.unity
     guid: e44234e3c2a33c141a0f926bbbc7c7c9
   - enabled: 1
-    path: Assets/Scenes/level_02_zone2.unity
+    path: Assets/Scenes/arena_Level2Zone2.unity
     guid: 30300a21d80cc45448ffe6cca81a447f
+  - enabled: 1
+    path: Assets/Scenes/arena_Level2Zone3.unity
+    guid: 06b8ba55f011c744c8219eedc260c3e9
+  - enabled: 1
+    path: Assets/Scenes/arena_Level2Zone4.unity
+    guid: 456574c453808834aabd5ec5d0252093
   m_configObjects: {}
