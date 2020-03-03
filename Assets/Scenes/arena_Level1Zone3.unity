@@ -796,7 +796,7 @@ PrefabInstance:
     - target: {fileID: 6519851107162222770, guid: bb672ea80511b455190f6d1e1820a65c,
         type: 3}
       propertyPath: winScene
-      value: 
+      value: arena_Level1Zone4
       objectReference: {fileID: 0}
     - target: {fileID: 6519851107162222770, guid: bb672ea80511b455190f6d1e1820a65c,
         type: 3}
@@ -806,9 +806,8 @@ PrefabInstance:
     - target: {fileID: 6519851107162222770, guid: bb672ea80511b455190f6d1e1820a65c,
         type: 3}
       propertyPath: loseScene
-      value: 
-      objectReference: {fileID: 102900000, guid: 9b178c18a26706246bd58f00bbbb9aed,
-        type: 3}
+      value: GameOver_LevelTesting
+      objectReference: {fileID: 0}
     - target: {fileID: 8291654042520702101, guid: bb672ea80511b455190f6d1e1820a65c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3837,7 +3836,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f404df70b37c473c988d55ae0ecb7af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: {fileID: 102900000, guid: f0397df226370384dacea8e7ed09d64f, type: 3}
+  scene: arena_Level1Zone4
 --- !u!61 &1069801583
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3872,7 +3871,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1069801581}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 9.31, z: -0}
+  m_LocalPosition: {x: 0, y: 9.7, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5262,7 +5261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f404df70b37c473c988d55ae0ecb7af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: {fileID: 102900000, guid: 3f835bdb92942764488a44c7e42d33e2, type: 3}
+  scene: 
 --- !u!114 &1552397944
 MonoBehaviour:
   m_ObjectHideFlags: 0

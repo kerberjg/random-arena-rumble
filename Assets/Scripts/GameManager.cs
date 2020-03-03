@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
+//using System;
 using UnityEngine.SceneManagement;
 using UnityEditor;
 
@@ -43,8 +43,8 @@ public class GameManager : MonoBehaviour
     private Dictionary<ValueModifier, GameObject> _arenaModifiers;
 
     [Header("Transition settings")]
-    public SceneAsset loseScene;
-    public SceneAsset winScene;
+    public string loseScene;
+    public string winScene;
     private string nextScene;
     public float startWaitTime = 3f;
     public float endWaitTime = 3f;
@@ -130,7 +130,7 @@ public class GameManager : MonoBehaviour
         if (isArenaPlaying) {
             status = GameStatus.end;
             counter = endWaitTime;
-            nextScene = winScene.name;
+            nextScene = winScene;
         }
     }
 
@@ -140,7 +140,7 @@ public class GameManager : MonoBehaviour
         if (isArenaPlaying) {
             status = GameStatus.end;
             counter = endWaitTime;
-            nextScene = loseScene.name;
+            nextScene = loseScene;
         }
     }
 

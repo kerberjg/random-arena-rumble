@@ -6,11 +6,11 @@ using UnityEditor;
 
 public class ScenePortal : MonoBehaviour
 {
-    public SceneAsset scene;
+    public string scene;
 
     void OnTriggerEnter2D(Collider2D collider) {
         if(collider.gameObject.tag == "Player") {
-            SceneManager.LoadScene(scene.name);
+            SceneManager.LoadScene(scene);
         }
     }
 }

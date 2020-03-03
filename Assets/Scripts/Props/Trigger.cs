@@ -46,7 +46,7 @@ public class Trigger : MonoBehaviour
 
         Renderer r;
         if(TryGetComponent<Renderer>(out r)) {
-            r.material = materialActive;
+            r.material = materialUnactive;
         }
 
         SoundManager.i.PlayOnce("ButtonDeactivate", true);

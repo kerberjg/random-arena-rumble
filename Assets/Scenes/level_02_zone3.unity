@@ -3711,9 +3711,8 @@ PrefabInstance:
     - target: {fileID: 6519851107162222770, guid: bb672ea80511b455190f6d1e1820a65c,
         type: 3}
       propertyPath: winScene
-      value: 
-      objectReference: {fileID: 102900000, guid: e44234e3c2a33c141a0f926bbbc7c7c9,
-        type: 3}
+      value: level_02_zone4
+      objectReference: {fileID: 0}
     - target: {fileID: 6519851107162222770, guid: bb672ea80511b455190f6d1e1820a65c,
         type: 3}
       propertyPath: enemyManager
@@ -3722,9 +3721,8 @@ PrefabInstance:
     - target: {fileID: 6519851107162222770, guid: bb672ea80511b455190f6d1e1820a65c,
         type: 3}
       propertyPath: loseScene
-      value: 
-      objectReference: {fileID: 102900000, guid: 9b178c18a26706246bd58f00bbbb9aed,
-        type: 3}
+      value: GameOver_LevelTesting
+      objectReference: {fileID: 0}
     - target: {fileID: 8291654042520702101, guid: bb672ea80511b455190f6d1e1820a65c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6975,7 +6973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f404df70b37c473c988d55ae0ecb7af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: {fileID: 102900000, guid: 456574c453808834aabd5ec5d0252093, type: 3}
+  scene: level_02_zone4
 --- !u!61 &2093156811
 BoxCollider2D:
   m_ObjectHideFlags: 0
