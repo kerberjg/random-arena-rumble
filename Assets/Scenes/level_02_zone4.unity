@@ -2188,6 +2188,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8194295563454950696, guid: 9d54cbd78dda845d6b2051eeee7a99d5,
         type: 3}
+      propertyPath: targets.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194295563454950696, guid: 9d54cbd78dda845d6b2051eeee7a99d5,
+        type: 3}
       propertyPath: targets.Array.data[0]
       value: 
       objectReference: {fileID: 1559192015}
@@ -2196,6 +2201,11 @@ PrefabInstance:
       propertyPath: type
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8194295563454950696, guid: 9d54cbd78dda845d6b2051eeee7a99d5,
+        type: 3}
+      propertyPath: targets.Array.data[1]
+      value: 
+      objectReference: {fileID: 893822224}
     - target: {fileID: 8194295563454950697, guid: 9d54cbd78dda845d6b2051eeee7a99d5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2757,7 +2767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f404df70b37c473c988d55ae0ecb7af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: {fileID: 102900000, guid: 765da9d4d9b4ec643af69bdc079bdcd7, type: 3}
+  scene: {fileID: 102900000, guid: ca5eb45a2587d2a469d921c994f1c69f, type: 3}
 --- !u!61 &893822226
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2792,7 +2802,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 893822224}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 9.32, z: 0}
+  m_LocalPosition: {x: 0, y: 8.93, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3388,7 +3398,7 @@ MonoBehaviour:
   isInfinite: 0
   spawnDelay: 2
   nextWave: 0
-  killToWin: 0
+  killToWin: 1
 --- !u!4 &1004453505
 Transform:
   m_ObjectHideFlags: 0
@@ -4255,6 +4265,11 @@ PrefabInstance:
       propertyPath: modifier.speed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3543492644263568970, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
+        type: 3}
+      propertyPath: modifier.leftWeapon
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9214501521292490981, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4579,13 +4594,19 @@ PrefabInstance:
         type: 3}
       propertyPath: winScene
       value: 
-      objectReference: {fileID: 102900000, guid: e44234e3c2a33c141a0f926bbbc7c7c9,
+      objectReference: {fileID: 102900000, guid: ca5eb45a2587d2a469d921c994f1c69f,
         type: 3}
     - target: {fileID: 6519851107162222770, guid: bb672ea80511b455190f6d1e1820a65c,
         type: 3}
       propertyPath: enemyManager
       value: 
       objectReference: {fileID: 1004453502}
+    - target: {fileID: 6519851107162222770, guid: bb672ea80511b455190f6d1e1820a65c,
+        type: 3}
+      propertyPath: loseScene
+      value: 
+      objectReference: {fileID: 102900000, guid: 9b178c18a26706246bd58f00bbbb9aed,
+        type: 3}
     - target: {fileID: 8291654042520702101, guid: bb672ea80511b455190f6d1e1820a65c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6675,6 +6696,11 @@ PrefabInstance:
     - target: {fileID: 7721051651994052482, guid: 29c018e3d18a0c449a43bee5e9ed462a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7721051651994052483, guid: 29c018e3d18a0c449a43bee5e9ed462a,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7721051651994052509, guid: 29c018e3d18a0c449a43bee5e9ed462a,
