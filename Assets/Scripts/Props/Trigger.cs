@@ -16,9 +16,15 @@ public class Trigger : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
-        if(!active && collider.gameObject.tag == "Player") {
+        //if(!active && collider.gameObject.tag == "Player") {
+        //    Debug.Log("Button Pressed! " + value);
+        //    if(controller.Trigger(this))
+        //        Activate();
+        //}
+        if (!active && collider.gameObject.tag == "Bullet")
+        {
             Debug.Log("Button Pressed! " + value);
-            if(controller.Trigger(this))
+            if (controller.Trigger(this))
                 Activate();
         }
     }
