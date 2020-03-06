@@ -10,22 +10,34 @@ public class Bullet : Hitbox {
     public float lifeTime_Bullet;
     /* public List<string> targetTag; */
 
+    CircleCollider2D bulletCollider;
+    
+
     Bullet() {
         destroyOnImpact = true;
     }
 
+    private void Start()
+    {
+        bulletCollider = this.GetComponent<CircleCollider2D>();
+    }
+
     void Update()
     {
-        transform.Translate(0, bulletSpeed * Time.deltaTime, 0);
+        //transform.Translate(0, bulletSpeed * Time.deltaTime, 0);
 
         Destroy(gameObject, lifeTime_Bullet);
 
+    }
+    private void FixedUpdate()
+    {
+        transform.Translate(0, bulletSpeed * Time.deltaTime, 0);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Pierceable" && piercing) { //
-            //Pierce object
+            Physics2D.IgnoreCollision(bulletCollider, collision.collider);
         } else {
             SoundManager.i.PlayOnce("BulletHit" + collision.gameObject.tag);
             Destroy(gameObject);
@@ -35,7 +47,7 @@ public class Bullet : Hitbox {
     private void OnCollisionExit2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Pierceable" && piercing) {
-            //Pierce object
+            Physics2D.IgnoreCollision(bulletCollider, collision.collider);
         } else {
             Destroy(gameObject);
         }
