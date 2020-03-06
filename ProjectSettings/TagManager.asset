@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Melee
   - Bullet
+  - Pierceable
   layers:
   - Default
   - TransparentFX

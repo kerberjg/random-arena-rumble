@@ -22,6 +22,25 @@ public class Bullet : Hitbox {
 
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Pierceable" && piercing) { //
+            //Pierce object
+        } else {
+            SoundManager.i.PlayOnce("BulletHit" + collision.gameObject.tag);
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Pierceable" && piercing) {
+            //Pierce object
+        } else {
+            Destroy(gameObject);
+        }
+    }
+    /*
     protected override void OnImpact(Collider2D collision)
     {
         SoundManager.i.PlayOnce("BulletHit" + collision.gameObject.tag);
@@ -33,5 +52,5 @@ public class Bullet : Hitbox {
         else {
             base.OnImpact(collision);
         }
-    }
+    } */
 }
