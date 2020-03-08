@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -921,7 +921,7 @@ GameObject:
   - component: {fileID: 153380184}
   m_Layer: 0
   m_Name: Wall (bottom-left)
-  m_TagString: Untagged
+  m_TagString: Pierceable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 123
@@ -2251,7 +2251,12 @@ PrefabInstance:
     - target: {fileID: 3543492644263568970, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
         type: 3}
       propertyPath: modifier.rightWeapon
-      value: 3
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5033976965940912042, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9214501521292490981, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
         type: 3}
@@ -2335,7 +2340,7 @@ GameObject:
   - component: {fileID: 703923038}
   m_Layer: 0
   m_Name: Wall (bottom-right)
-  m_TagString: Untagged
+  m_TagString: Pierceable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 123
@@ -2546,7 +2551,7 @@ GameObject:
   - component: {fileID: 733239706}
   m_Layer: 0
   m_Name: 'Wall (left) '
-  m_TagString: Untagged
+  m_TagString: Pierceable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 123
@@ -2929,7 +2934,7 @@ GameObject:
   - component: {fileID: 792827523}
   m_Layer: 0
   m_Name: Wall (top-left)
-  m_TagString: Untagged
+  m_TagString: Pierceable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 123
@@ -3797,7 +3802,7 @@ GameObject:
   - component: {fileID: 1034294176}
   m_Layer: 0
   m_Name: Wall (top-right)
-  m_TagString: Untagged
+  m_TagString: Pierceable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 123
@@ -4073,7 +4078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f404df70b37c473c988d55ae0ecb7af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: sniperLevel_Zone2
+  scene: sniperLevel_Zone3
 --- !u!61 &1069801583
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6158,7 +6163,7 @@ GameObject:
   - component: {fileID: 1912037261}
   m_Layer: 0
   m_Name: 'Wall (right) '
-  m_TagString: Untagged
+  m_TagString: Pierceable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 123
@@ -6603,7 +6608,7 @@ GameObject:
   - component: {fileID: 2002437395}
   m_Layer: 0
   m_Name: Wall (top-middle)
-  m_TagString: Untagged
+  m_TagString: Pierceable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 123
@@ -7320,6 +7325,7 @@ GameObject:
   - component: {fileID: 5250456786952593080}
   - component: {fileID: 5250456786952593087}
   - component: {fileID: 5250456786952593086}
+  - component: {fileID: 5250456786952593088}
   m_Layer: 0
   m_Name: Button_03
   m_TagString: Untagged
@@ -7369,6 +7375,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5250456786952593088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5250456786952593085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b00b9ea0ea54234694c5dc3a7bad57f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delta: 3
+  maxSpeed: 3
+  minSpeed: 1
 --- !u!1 &5250456787248923616
 GameObject:
   m_ObjectHideFlags: 0
@@ -7402,8 +7423,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b00b9ea0ea54234694c5dc3a7bad57f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  delta: 5
+  delta: 3
+  maxSpeed: 3
+  minSpeed: 1
 --- !u!61 &5250456787248923618
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7520,6 +7542,7 @@ GameObject:
   - component: {fileID: 5250456787791347853}
   - component: {fileID: 5250456787791347850}
   - component: {fileID: 5250456787791347851}
+  - component: {fileID: 5250456787791347849}
   m_Layer: 0
   m_Name: Button_04
   m_TagString: Untagged
@@ -7527,6 +7550,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5250456787791347849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5250456787791347848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b00b9ea0ea54234694c5dc3a7bad57f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delta: 3
+  maxSpeed: 3
+  minSpeed: 1
 --- !u!61 &5250456787791347850
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7704,6 +7742,7 @@ GameObject:
   - component: {fileID: 5250456787848153265}
   - component: {fileID: 5250456787848153270}
   - component: {fileID: 5250456787848153271}
+  - component: {fileID: 5250456787848153269}
   m_Layer: 0
   m_Name: Button_02
   m_TagString: Untagged
@@ -7711,6 +7750,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5250456787848153269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5250456787848153268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b00b9ea0ea54234694c5dc3a7bad57f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delta: 3
+  maxSpeed: 3
+  minSpeed: 1
 --- !u!61 &5250456787848153270
 BoxCollider2D:
   m_ObjectHideFlags: 0
