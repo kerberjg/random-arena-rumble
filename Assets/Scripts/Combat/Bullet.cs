@@ -20,6 +20,8 @@ public class Bullet : Hitbox {
     private void Start()
     {
         bulletCollider = this.GetComponent<CircleCollider2D>();
+
+     
     }
 
     void Update()
@@ -36,9 +38,14 @@ public class Bullet : Hitbox {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Pierceable" && piercing) { //
+        if (collision.gameObject.tag == "Pierceable" && piercing) { //
             Physics2D.IgnoreCollision(bulletCollider, collision.collider);
-        } else {
+        } else if(collision.gameObject.tag == "Enemy" && piercing) {
+            Physics2D.IgnoreCollision(bulletCollider, collision.collider);
+        } else if(collision.gameObject.layer == LayerMask.NameToLayer("Ignore Collision")) {
+            Physics2D.IgnoreCollision(bulletCollider, collision.collider);
+        }
+        else {
             SoundManager.i.PlayOnce("BulletHit" + collision.gameObject.tag);
             Destroy(gameObject);
         }
@@ -47,6 +54,10 @@ public class Bullet : Hitbox {
     private void OnCollisionExit2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Pierceable" && piercing) {
+            Physics2D.IgnoreCollision(bulletCollider, collision.collider);
+        } else if (collision.gameObject.tag == "Enemy" && piercing) {
+            Physics2D.IgnoreCollision(bulletCollider, collision.collider);
+        } else if (collision.gameObject.layer == LayerMask.NameToLayer("Ignore Collision")) {
             Physics2D.IgnoreCollision(bulletCollider, collision.collider);
         } else {
             Destroy(gameObject);
