@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -879,7 +879,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 142167354}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ObsticleLava
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -919,7 +919,7 @@ GameObject:
   - component: {fileID: 153380186}
   - component: {fileID: 153380185}
   - component: {fileID: 153380184}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (bottom-left)
   m_TagString: Pierceable
   m_Icon: {fileID: 0}
@@ -2338,7 +2338,7 @@ GameObject:
   - component: {fileID: 703923040}
   - component: {fileID: 703923039}
   - component: {fileID: 703923038}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (bottom-right)
   m_TagString: Pierceable
   m_Icon: {fileID: 0}
@@ -2549,7 +2549,7 @@ GameObject:
   - component: {fileID: 733239708}
   - component: {fileID: 733239707}
   - component: {fileID: 733239706}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 'Wall (left) '
   m_TagString: Pierceable
   m_Icon: {fileID: 0}
@@ -2932,7 +2932,7 @@ GameObject:
   - component: {fileID: 792827525}
   - component: {fileID: 792827524}
   - component: {fileID: 792827523}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (top-left)
   m_TagString: Pierceable
   m_Icon: {fileID: 0}
@@ -3800,7 +3800,7 @@ GameObject:
   - component: {fileID: 1034294178}
   - component: {fileID: 1034294177}
   - component: {fileID: 1034294176}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (top-right)
   m_TagString: Pierceable
   m_Icon: {fileID: 0}
@@ -6161,7 +6161,7 @@ GameObject:
   - component: {fileID: 1912037263}
   - component: {fileID: 1912037262}
   - component: {fileID: 1912037261}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 'Wall (right) '
   m_TagString: Pierceable
   m_Icon: {fileID: 0}
@@ -6606,7 +6606,7 @@ GameObject:
   - component: {fileID: 2002437397}
   - component: {fileID: 2002437396}
   - component: {fileID: 2002437395}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (top-middle)
   m_TagString: Pierceable
   m_Icon: {fileID: 0}

@@ -85,9 +85,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowResuscitation: 0
-  destroyOnDeath: 0
+  destroyOnDeath: 1
   hurtSoundName: BulletHitEnemy
-  maxHealth: 5
+  maxHealth: 2
   health: 0
   invulnerabilityTime: 0
   invulnerabilityBlink: 0.0666
