@@ -6231,7 +6231,7 @@ PrefabInstance:
     - target: {fileID: 3543492644263568970, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
         type: 3}
       propertyPath: modifier.rightWeapon
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5033976965940912042, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
         type: 3}
