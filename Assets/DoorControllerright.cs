@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-public class DoorController : MonoBehaviour
+public class DoorControllerright : MonoBehaviour
 {
     public bool isOpening = false;
     public bool isOpenned = false;
@@ -24,19 +24,19 @@ public class DoorController : MonoBehaviour
 
     private void Update()
     {
-        if(isOpening == true && isOpenned == false)
+        if (isOpening == true && isOpenned == false)
         {
-            pivot.transform.localEulerAngles += new Vector3(0, 1, 0) * speed * Time.deltaTime;
-            if(pivot.transform.localEulerAngles.x >= 90.0f)
+            pivot.transform.localEulerAngles += new Vector3(0, 0, -1) * speed * Time.deltaTime;
+            if (pivot.transform.localEulerAngles.x >= 90.0f)
             {
                 pivot.transform.localEulerAngles = new Vector3(
-                    pivot.transform.localEulerAngles.z,
+                    pivot.transform.localEulerAngles.y,
                     90.0f,
                     pivot.transform.localEulerAngles.x);
                 isOpenned = true;
                 isOpening = false;
 
-                if(events != null)
+                if (events != null)
                 {
                     events.Invoke();
                 }
