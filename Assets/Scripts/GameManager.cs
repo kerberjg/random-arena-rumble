@@ -149,6 +149,10 @@ public class GameManager : MonoBehaviour
     {
         ToArenaScene(ArenaType.Sand);
     }
+    public void ToLevel1Scene()
+    {
+        SceneManager.LoadScene("arena_Level1Zone1");
+    }
 
     public void toCreditsScene()
     {
