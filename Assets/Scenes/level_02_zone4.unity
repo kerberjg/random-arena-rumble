@@ -2767,7 +2767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f404df70b37c473c988d55ae0ecb7af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: level_03_zone1
+  scene: sniperLevel_Zone1
 --- !u!61 &893822226
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4270,6 +4270,11 @@ PrefabInstance:
       propertyPath: modifier.leftWeapon
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5033976965940912042, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9214501521292490981, guid: 87a3ad50c2fc0404ba67ce9f8ac67761,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4593,7 +4598,7 @@ PrefabInstance:
     - target: {fileID: 6519851107162222770, guid: bb672ea80511b455190f6d1e1820a65c,
         type: 3}
       propertyPath: winScene
-      value: level_03_zone1
+      value: sniperLevel_Zone1
       objectReference: {fileID: 0}
     - target: {fileID: 6519851107162222770, guid: bb672ea80511b455190f6d1e1820a65c,
         type: 3}
