@@ -38,6 +38,11 @@ public class Bullet : Hitbox {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.tag == "Enemy") {
+        Hurtbox target = collision.gameObject.GetComponent<Hurtbox>();
+            target.Hit(damage);
+        }
+
         if (collision.gameObject.tag == "Pierceable" && piercing) { //
             Physics2D.IgnoreCollision(bulletCollider, collision.collider);
         } else if(collision.gameObject.tag == "Enemy" && piercing) {
@@ -46,7 +51,7 @@ public class Bullet : Hitbox {
             Physics2D.IgnoreCollision(bulletCollider, collision.collider);
         }
         else {
-            SoundManager.i.PlayOnce("BulletHit" + collision.gameObject.tag);
+            SoundManager.i.PlayOnce("BulletHit" + collision.gameObject.tag);     
             Destroy(gameObject);
         }
     }
