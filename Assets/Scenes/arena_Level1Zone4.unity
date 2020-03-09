@@ -357,6 +357,8 @@ MonoBehaviour:
   isOpening: 0
   isOpenned: 0
   speed: 50
+  targetAngle: 135
+  clockwise: 1
   pivot: {fileID: 838044651}
   events:
     m_PersistentCalls:
@@ -2260,6 +2262,8 @@ MonoBehaviour:
   isOpening: 0
   isOpenned: 0
   speed: 50
+  targetAngle: 270
+  clockwise: 1
   pivot: {fileID: 471825689}
   events:
     m_PersistentCalls:
@@ -3134,6 +3138,8 @@ MonoBehaviour:
   isOpening: 0
   isOpenned: 0
   speed: 50
+  targetAngle: 90
+  clockwise: 1
   pivot: {fileID: 1589387725}
   events:
     m_PersistentCalls:
@@ -3796,6 +3802,8 @@ MonoBehaviour:
   isOpening: 0
   isOpenned: 0
   speed: 50
+  targetAngle: 315
+  clockwise: 0
   pivot: {fileID: 1310002820}
   events:
     m_PersistentCalls:
@@ -3899,14 +3907,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 925873810}
-  m_LocalRotation: {x: 0, y: -0.38268343, z: 0, w: 0.92387956}
+  m_LocalRotation: {x: 0, y: 0.3826836, z: -0, w: -0.92387944}
   m_LocalPosition: {x: -2.25, y: 1.85, z: 9.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1098519260}
   m_Father: {fileID: 743404515}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 315, z: 0}
 --- !u!1 &944087052
 GameObject:
   m_ObjectHideFlags: 0
@@ -4554,6 +4562,8 @@ MonoBehaviour:
   isOpening: 0
   isOpenned: 0
   speed: 50
+  targetAngle: 225
+  clockwise: 0
   pivot: {fileID: 925873811}
   events:
     m_PersistentCalls:
@@ -4729,7 +4739,12 @@ PrefabInstance:
     - target: {fileID: 9204460091739815144, guid: f3f5f10953660b74891e582531277d84,
         type: 3}
       propertyPath: field of view
-      value: 38
+      value: 44
+      objectReference: {fileID: 0}
+    - target: {fileID: 9204460091739815144, guid: f3f5f10953660b74891e582531277d84,
+        type: 3}
+      propertyPath: orthographic
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9204460091739815147, guid: f3f5f10953660b74891e582531277d84,
         type: 3}
@@ -4851,6 +4866,8 @@ MonoBehaviour:
   isOpening: 0
   isOpenned: 0
   speed: 50
+  targetAngle: 0
+  clockwise: 0
   pivot: {fileID: 200195675}
   events:
     m_PersistentCalls:
@@ -5944,14 +5961,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1389122347}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.1, y: 18.2, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 471825689}
   m_Father: {fileID: 0}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &1398613766
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6516,6 +6533,8 @@ MonoBehaviour:
   isOpening: 0
   isOpenned: 0
   speed: 50
+  targetAngle: 45
+  clockwise: 1
   pivot: {fileID: 1330461873}
   events:
     m_PersistentCalls:

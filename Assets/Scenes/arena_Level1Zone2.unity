@@ -4813,6 +4813,8 @@ MonoBehaviour:
   isOpening: 0
   isOpenned: 0
   speed: 50
+  targetAngle: 270
+  clockwise: 0
   pivot: {fileID: 633126698}
   events:
     m_PersistentCalls:
@@ -4972,6 +4974,8 @@ MonoBehaviour:
   isOpening: 0
   isOpenned: 0
   speed: 50
+  targetAngle: 90
+  clockwise: 1
   pivot: {fileID: 43068339}
   events:
     m_PersistentCalls:
@@ -6130,6 +6134,8 @@ MonoBehaviour:
   isOpening: 0
   isOpenned: 0
   speed: 20
+  targetAngle: 90
+  clockwise: 1
   pivot: {fileID: 1261972845}
   events:
     m_PersistentCalls:

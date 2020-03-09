@@ -10,6 +10,8 @@ public class DoorController : MonoBehaviour
     public bool isOpenned = false;
 
     public float speed = 5;
+    public float targetAngle = 90.0f;
+    public bool clockwise = true;
 
     public Transform pivot;
 
@@ -26,12 +28,20 @@ public class DoorController : MonoBehaviour
     {
         if(isOpening == true && isOpenned == false)
         {
-            pivot.transform.localEulerAngles += new Vector3(0, 1, 0) * speed * Time.deltaTime;
-            if(pivot.transform.localEulerAngles.x >= 90.0f)
+            if (clockwise)
+            {
+                pivot.transform.Rotate(new Vector3(0, 1, 0), speed * Time.deltaTime);
+            }
+            else
+            {
+                pivot.transform.Rotate(new Vector3(0, -1, 0), speed * Time.deltaTime);
+            }
+            print(pivot.transform.localEulerAngles.y);
+            if(Mathf.Abs(pivot.transform.localEulerAngles.y - targetAngle) <= 5f)
             {
                 pivot.transform.localEulerAngles = new Vector3(
                     pivot.transform.localEulerAngles.z,
-                    90.0f,
+                    targetAngle,
                     pivot.transform.localEulerAngles.x);
                 isOpenned = true;
                 isOpening = false;
