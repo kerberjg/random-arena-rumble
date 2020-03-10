@@ -26,6 +26,8 @@ public class EnemyManager : MonoBehaviour
 
     public bool killToWin;
 
+    public bool startToSpawn = true;
+
     private void Start()
     {
         waveEnemies = GameManager.waveCounter < 2 ? enemyCountStart : GameManager.waveCounter * enemyIncrement;
@@ -33,12 +35,21 @@ public class EnemyManager : MonoBehaviour
         waveText = GameObject.Find("WaveText").GetComponent<Text>();
     }
 
+    public void StartSpawnEnemy()
+    {
+        startToSpawn = true;
+    }
+
     void Update()
     {
+        if(startToSpawn == false)
+        {
+            return;
+        }
         timer_enemySpawner += Time.deltaTime;
 
         // level just started, delay start and show text
-        if(!ongoingWave && !nextWave) {
+        if (!ongoingWave && !nextWave) {
             //Do the thing u want before next wave.
             waveText.text = "Wave " + GameManager.waveCounter;
             SoundManager.i.PlayOnce("Cheering", true);
@@ -58,7 +69,7 @@ public class EnemyManager : MonoBehaviour
             waveText.enabled = false;
 
             // keep spawning enemies if necessary
-            if ((isInfinite || currentEnemies < waveEnemies) && timer_enemySpawner >= spawnDelay) {
+            if ((isInfinite || currentEnemies < waveEnemies) && timer_enemySpawner > spawnDelay) {
 
                 EnemyContainer.GetComponentInChildren<MeleeEnemy>().target = GameObject.Find("Player").GetComponent<Transform>();
                 EnemyContainer.GetComponentInChildren<Hurtbox>().destroyOnDeath = true;

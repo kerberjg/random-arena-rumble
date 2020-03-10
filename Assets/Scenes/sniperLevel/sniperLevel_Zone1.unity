@@ -4269,6 +4269,16 @@ PrefabInstance:
       propertyPath: field of view
       value: 38
       objectReference: {fileID: 0}
+    - target: {fileID: 9204460091739815144, guid: f3f5f10953660b74891e582531277d84,
+        type: 3}
+      propertyPath: orthographic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9204460091739815144, guid: f3f5f10953660b74891e582531277d84,
+        type: 3}
+      propertyPath: far clip plane
+      value: 997
+      objectReference: {fileID: 0}
     - target: {fileID: 9204460091739815147, guid: f3f5f10953660b74891e582531277d84,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -5347,6 +5357,7 @@ MonoBehaviour:
   spawnDelay: 2
   nextWave: 0
   killToWin: 0
+  startToSpawn: 1
 --- !u!4 &1443770641
 Transform:
   m_ObjectHideFlags: 0
