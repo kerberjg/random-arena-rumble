@@ -49,6 +49,8 @@ public class Bullet : Hitbox {
             Physics2D.IgnoreCollision(bulletCollider, collision.collider);
         } else if(collision.gameObject.layer == LayerMask.NameToLayer("Ignore Collision")) {
             Physics2D.IgnoreCollision(bulletCollider, collision.collider);
+        } else if(collision.gameObject.tag == "Bullet") {
+            Physics2D.IgnoreCollision(bulletCollider, collision.collider);
         }
         else {
             SoundManager.i.PlayOnce("BulletHit" + collision.gameObject.tag);     
